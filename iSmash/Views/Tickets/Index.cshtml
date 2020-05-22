@@ -1,0 +1,105 @@
+﻿@model IEnumerable<iSmash.Models.Ticket>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("DEV")
+        </th>
+        <th>
+            @Html.DisplayName("PROJECT")
+        </th>
+        <th>
+            @Html.DisplayName("SUBMITTER")
+        </th>
+        <th>
+            @Html.DisplayName("PRIORITY")
+        </th>
+        <th>
+            @Html.DisplayName("STATUS")
+        </th>
+        <th>
+            @Html.DisplayName("TYPE")
+        </th>
+        <th>
+            @Html.DisplayName("TITLE")
+        </th>
+        <th>
+            @Html.DisplayName("DESCRIPTION")
+        </th>
+        <th>
+            @Html.DisplayName("CREATED")
+        </th>
+        <th>
+            @Html.DisplayName("UPDATED")
+        </th>
+        <th>
+            @Html.DisplayName("Is Archived?")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Developer.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Submitter.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketPriority.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketStatus.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Updated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsArchived)
+            </td>
+            <td>
+                @Html.ActionLink("Dashboard", "Dashboard", new { id = item.Id })
+            </td>
+            @if (User.IsInRole("ProjectManager") || User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            }
+
+        </tr>
+    }
+
+</table>

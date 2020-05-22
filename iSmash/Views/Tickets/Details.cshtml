@@ -1,0 +1,121 @@
+﻿@model iSmash.Models.Ticket
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ticket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Developer: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Developer.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Project Name: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Submitter: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Submitter.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Priority: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketPriority.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Status: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketStatus.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Type: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketType.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Title: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Description: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Created: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Updated: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Updated)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Is Archived?")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsArchived)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (User.IsInRole("ProjectManager") || User.IsInRole("Admin"))
+        {
+            <div>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+        else
+        {
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    @*<div>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
+</p>

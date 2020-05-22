@@ -1,0 +1,22 @@
+﻿
+.td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.td-narrow {
+    max-width: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.td-wide {
+    max-width: 75px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.td-wide {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

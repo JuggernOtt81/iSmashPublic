@@ -1,0 +1,127 @@
+﻿@using iSmash.Models
+@using iSmash.Helpers
+@model Ticket
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    @*Twitter
+        <meta name="twitter:site" content="@themepixels">
+        <meta name="twitter:creator" content="@themepixels">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Bracket">
+        <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
+        <meta name="twitter:image" content="http://themepixels.me/bracket/img/bracket-social.png">
+
+         Facebook
+        <meta property="og:url" content="http://themepixels.me/bracket">
+        <meta property="og:title" content="Bracket">
+        <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
+
+        <meta property="og:image" content="http://themepixels.me/bracket/img/bracket-social.png">
+        <meta property="og:image:secure_url" content="http://themepixels.me/bracket/img/bracket-social.png">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="600">
+
+         Meta
+        <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
+        <meta name="author" content="ThemePixels">
+
+        <title>Card UI Template Design - Bracket Responsive Bootstrap 4 Admin Template</title>*@
+
+    <!-- vendor css -->
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/ionicons.css" rel="stylesheet" />
+    <link href="~/Content/perfect-scrollbar.css" rel="stylesheet" />
+    <link href="~/Content/jquery.switchButton.css" rel="stylesheet" />
+    <link href="~/Content/github.css" rel="stylesheet" />
+
+    <!-- Bracket CSS -->
+    <link rel="stylesheet" href="../css/bracket.css">
+</head>
+
+
+<h2>Dashboard</h2>
+
+
+<div class="col-md mg-t-20 mg-md-t-0">
+    <div class="card bd-0">
+        <div class="card-header bg-dark">
+            <ul class="nav nav-tabs nav-tabs-for-dark card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link bd-0 active pd-y-8" href="#">Attachments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link bd-0 tx-gray-light" href="#">Histories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link bd-0 tx-gray-light" href="#">Notifications</a>
+                </li>
+            </ul>
+        </div><!-- card-header -->
+        <div class="card-body color-gray-lighter bd bd-t-0 rounded-bottom">
+
+            @using (Html.BeginForm("Create", "TicketAttachments", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.Hidden("TicketId", Model.Id)
+
+                <div class="row">
+                    <div class="col">
+                        <input type="file" name="newAttachment" />
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input type="text" name="FileName" />
+
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <button type="submit" class="btn btn-outline-dark">Save</button>
+                </div>
+            }
+            <hr />
+            <table>
+                <tr>
+                    <th>
+
+                    </th>
+                    <th>
+                        @Html.DisplayName("Path")
+                    </th>
+                </tr>
+                @foreach (var attachment in Model.Attachments)
+                {
+                    <tr>
+                        <td>
+                            <img src="@AttachmentHelper.ShowIcon(attachment.FilePath)"/>
+                        </td>
+                        <td>
+                            <a target="_blank" href="@Url.Content(attachment.FilePath)">@attachment.FileName</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+
+        </div><!-- card-body -->
+    </div><!-- card -->
+</div><!-- col -->
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/popper.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/perfect-scrollbar.jquery.js"></script>
+<script src="~/Scripts/moment.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery.switchButton.js"></script>
+<script src="~/Scripts/jquery.peity.js"></script>
+<script src="~/Scripts/highlight.pack.js"></script>
+<script src="~/Scripts/bracket.js"></script>

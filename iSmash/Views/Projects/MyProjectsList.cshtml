@@ -1,0 +1,119 @@
+﻿@model IEnumerable<iSmash.Models.MyProjectsList>
+@{
+    ViewBag.Title = "MyProjectsList";
+}
+
+<h2>MyProjects</h2>
+<div class="container">
+    <p>
+        Hello? Hello? Hello? <br /> is there anybody in here?
+    </p>
+</div>
+
+<div class="br-section-wrapper">
+    <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10">Basic Responsive DataTable</h6>
+    <p class="mg-b-25 mg-lg-b-50">Searching, ordering and paging goodness will be immediately added to the table, as shown in this example.</p>
+
+    <div class="table-wrapper">
+        <table id="datatable1" class="table display responsive nowrap">
+            <tr>
+                <th class="wd-15p">
+                    @Html.DisplayNameFor(model => model.ProjId)
+                </th>
+                <th class="wd-15p">
+                    @Html.DisplayNameFor(model => model.ProjPriority)
+                </th>
+                <th class="wd-15p">
+                    @Html.DisplayNameFor(model => model.ProjTitle)
+                </th>
+                <th class="wd-15p">
+                    @Html.DisplayNameFor(model => model.ProjCreated)
+                </th>
+                <th class="wd-15p">
+                    @Html.DisplayNameFor(model => model.ProjUpdated)
+                </th>
+                <th class="wd-15p">
+                    @Html.DisplayNameFor(model => model.ProjStatus)
+                </th>
+                <th class="wd-15p">
+                    @Html.DisplayNameFor(model => model.ProjManager)
+                </th>
+                <th class="wd-15p">
+                    @Html.DisplayNameFor(model => model.ProjTeam)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @* should be clickable *@
+                @Html.DisplayFor(modelItem => item.ProjId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjPriority)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjUpdated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjManager)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjTeam)
+            </td>
+        </tr>
+            }
+        </table>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/popper.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/perfect-scrollbar.jquery.js"></script>
+    <script src="~/Scripts/moment.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.switchButton.js"></script>
+    <script src="~/Scripts/jquery.peity.js"></script>
+    <script src="~/Scripts/highlight.pack.js"></script>
+    <script src="~/Scripts/jquery.dataTables.js"></script>
+    <script src="~/Scripts/dataTables.responsive.js"></script>
+    <script src="~/Scripts/select2.min.js"></script>
+    <script src="~/Scripts/bracket.js"></script>
+
+    <script>
+        $(function () {
+            'use strict';
+
+            $('#datatable1').DataTable({
+                responsive: true,
+                language: {
+                    searchPlaceholder: 'Search...',
+                    sSearch: '',
+                    lengthMenu: '_MENU_ items/page',
+                }
+            });
+
+            $('#datatable2').DataTable({
+                bLengthChange: false,
+                searching: false,
+                responsive: true
+            });
+
+            // Select2
+            $('.dataTables_length select').select2({ minimumResultsForSearch: 2 });
+
+        });
+    </script>
+}

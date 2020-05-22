@@ -1,0 +1,83 @@
+﻿@model IEnumerable<iSmash.ViewModels.CustomUserData>
+@{
+    ViewBag.Title = "ManageRoles";
+}
+
+<h2>ManageRoles</h2>
+
+<div class="container">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            @*Left col that holds the users*@
+            <div class="col">
+                @Html.ListBox("UserIds")
+            </div>
+        </div>
+
+        <div class="row">
+            @*Right col that holds the users*@
+            <div class="col">
+                @Html.DropDownList("RoleName", "- Select Role - ")
+            </div>
+        </div>
+
+        <br />
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-primary" style="width:100%" ;>MANAGE ROLES</button>
+            </div>
+        </div>
+
+    }
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("Full Name")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleName)
+            </th>
+        </tr>
+
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => user.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => user.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => user.RoleName)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

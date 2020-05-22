@@ -1,0 +1,118 @@
+﻿@model IEnumerable<iSmash.ViewModels.CustomUserData>
+@{
+    ViewBag.Title = "ManageProjectAssignments";
+}
+
+@*<h2>@ViewBag.Title</h2>*@
+<h2>Manage Project Assignments</h2>
+
+<div class="container">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            @*Left col that holds the users*@
+            <div class="col" style="width:300px;">
+                @Html.ListBox("UserIds")
+            </div>
+
+            @*Right col that holds the users*@
+            <div class="col" style="width:300px;">
+                @Html.ListBox("ProjectIds")
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-primary" style="width:100%" ;>SUBMIT CHANGES TO PROJECTS</button>
+            </div>
+        </div>
+    }
+
+</div>
+
+<div class="br-section-wrapper">
+    <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10">Basic Responsive DataTable</h6>
+    <p class="mg-b-25 mg-lg-b-50">Searching, ordering and paging goodness will be immediately added to the table, as shown in this example.</p>
+
+
+    <div class="table-wrapper">
+        <table id="datatable1" class="table display responsive nowrap">
+
+            <thead>
+                <tr>
+                    <th class="wd-15p">@Html.DisplayNameFor(model => model.RoleName)</th>
+                    <th class="wd-15p">@Html.DisplayName("Full Name")</th>
+                    <th class="wd-20p">@Html.DisplayNameFor(model => model.Email)</th>
+                    <th class="wd-15p">@Html.DisplayName("Projects")</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => user.RoleName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => user.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => user.Email)
+                        </td>
+                        <td>
+                            @foreach (var projName in user.ProjectNames)
+                            {
+                                @projName
+                                <br />
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section scripts{ 
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/popper.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/perfect-scrollbar.jquery.js"></script>
+<script src="~/Scripts/moment.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery.switchButton.js"></script>
+<script src="~/Scripts/jquery.peity.js"></script>
+<script src="~/Scripts/highlight.pack.js"></script>
+<script src="~/Scripts/jquery.dataTables.js"></script>
+<script src="~/Scripts/dataTables.responsive.js"></script>
+<script src="~/Scripts/select2.min.js"></script>
+<script src="~/Scripts/bracket.js"></script>
+
+<script>
+    $(function () {
+        'use strict';
+
+        $('#datatable1').DataTable({
+            responsive: true,
+            language: {
+                searchPlaceholder: 'Search...',
+                sSearch: '',
+                lengthMenu: '_MENU_ items/page',
+            }
+        });
+
+        $('#datatable2').DataTable({
+            bLengthChange: false,
+            searching: false,
+            responsive: true
+        });
+
+        // Select2
+        $('.dataTables_length select').select2({ minimumResultsForSearch: 2 });
+
+    });
+</script>
+}
