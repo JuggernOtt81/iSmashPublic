@@ -21,6 +21,7 @@ namespace iSmash.Controllers
         private TicketHelper ticketHelper = new TicketHelper();
         private TicketAttachment ticketAttachment = new TicketAttachment();
 
+
         public ActionResult Dashboard(int id)
         {
             return View(db.Tickets.Find(id));
@@ -76,19 +77,19 @@ namespace iSmash.Controllers
 
         public ActionResult Index()
         {
-            //var tickets = db.Tickets.Include(t => t.Developer).Include(t => t.Project).Include(t => t.Submitter).Include(t => t.TicketPriority).Include(t => t.TicketStatus).Include(t => t.TicketType);
+            var tickets = db.Tickets.Include(t => t.Developer).Include(t => t.Project).Include(t => t.Submitter).Include(t => t.TicketPriority).Include(t => t.TicketStatus).Include(t => t.TicketType);
             //return View(tickets.ToList());
 
-            //var allTickets = new List<Ticket>();
+            var allTickets = ticketHelper.ListMyTickets().ToList();
             var ticketIndexVMs = new List<TicketIndexViewModel>();
             //var userId = new User.Identity.GetUserId();
             //var myRole = rolesHelper.ListUserRoles(userId).FirstOrDefault();
-            foreach (var ticket in ticketHelper.GetMyTickets())
-            {
+            //foreach (var ticket in ticketHelper.GetMyTickets())
+            //{
+            //    ticketHelper.GetMyTickets();
+            //}
 
-            }
-
-            return View();
+            return View(allTickets);
         }
 
         // GET: Tickets/Details/5
