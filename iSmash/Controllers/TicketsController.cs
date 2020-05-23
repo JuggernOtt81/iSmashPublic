@@ -27,10 +27,6 @@ namespace iSmash.Controllers
             return View(db.Tickets.Find(id));
         }
 
-
-
-
-
         [Authorize(Roles = "ProjectManager, Admin")]
         public ActionResult ManageTicketAssignments()
         {
@@ -81,7 +77,7 @@ namespace iSmash.Controllers
             //return View(tickets.ToList());
 
             var allTickets = ticketHelper.ListMyTickets().ToList();
-            var ticketIndexVMs = new List<TicketIndexViewModel>();
+            //var ticketIndexVMs = new List<TicketIndexViewModel>();
             //var userId = new User.Identity.GetUserId();
             //var myRole = rolesHelper.ListUserRoles(userId).FirstOrDefault();
             //foreach (var ticket in ticketHelper.GetMyTickets())
