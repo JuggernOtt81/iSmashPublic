@@ -19,6 +19,7 @@ namespace iSmash.Helpers
         public ICollection<Project> ListUserProjects(string userId)
         {
             ApplicationUser user = db.Users.Find(userId);
+
             var projects = user.Projects.ToList();
             return projects;
         }

@@ -67,13 +67,5 @@ namespace iSmash.Controllers
 
 
 
-    //public ActionResult AskAboutRoles()
-    //{
-    //    if (rolesHelper.UsersInRole("Developer").Count == 0)
-    //    {
-    //        return View("NoDevs");
-    //    }
 
-    //    return View();
-    //}
 }

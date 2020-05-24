@@ -20,16 +20,13 @@ namespace iSmash.Controllers
         private RolesHelper rolesHelper = new RolesHelper();
         private TicketHelper ticketHelper = new TicketHelper();
         private TicketAttachment ticketAttachment = new TicketAttachment();
+        private  HistoryHelper historyHelper = new HistoryHelper();
 
 
         public ActionResult Dashboard(int id)
         {
             return View(db.Tickets.Find(id));
         }
-
-
-
-
 
         [Authorize(Roles = "ProjectManager, Admin")]
         public ActionResult ManageTicketAssignments()
@@ -70,7 +67,7 @@ namespace iSmash.Controllers
         }
 
 
-
+ 
 
         // GET: Tickets
 
@@ -81,7 +78,7 @@ namespace iSmash.Controllers
             //return View(tickets.ToList());
 
             var allTickets = ticketHelper.ListMyTickets().ToList();
-            var ticketIndexVMs = new List<TicketIndexViewModel>();
+            //var ticketIndexVMs = new List<TicketIndexViewModel>();
             //var userId = new User.Identity.GetUserId();
             //var myRole = rolesHelper.ListUserRoles(userId).FirstOrDefault();
             //foreach (var ticket in ticketHelper.GetMyTickets())
@@ -176,10 +173,18 @@ namespace iSmash.Controllers
         {
             if (ModelState.IsValid)
             {
+                //we want to use AsNoTracking() to get a Memento Ticket object
+                var oldTicket = db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id == ticket.Id);
+
+
                 ticket.Updated = DateTime.Now;
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                historyHelper.ManageHistoryRecordCreation(oldTicket, ticket);
+
+                return RedirectToAction("Index", "TicketHistories");
+
             }
             ViewBag.DeveloperId = new SelectList(db.Users, "Id", "FirstName", ticket.DeveloperId);
             ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name", ticket.ProjectId);

@@ -84,8 +84,12 @@ namespace iSmash.Models
 
         public System.Data.Entity.DbSet<iSmash.Models.TicketAttachment> TicketAttachments { get; set; }
 
-/*
-        public System.Data.Entity.DbSet<iSmash.Models.ApplicationUser> ApplicationUsers { get; set; }
-*/
+        public System.Data.Entity.DbSet<iSmash.Models.TicketHistory> TicketHistories { get; set; }
+
+        //public System.Data.Entity.DbSet<iSmash.Models.ApplicationUser> ApplicationUsers { get; set; }
+
+        /*
+                public System.Data.Entity.DbSet<iSmash.Models.ApplicationUser> ApplicationUsers { get; set; }
+        */
     }
 }
