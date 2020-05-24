@@ -94,7 +94,7 @@ namespace iSmash.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "SubmitterId", ticketHistory.TicketId);
-            ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", ticketHistory.UserId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "FullName", ticketHistory.UserId);
             return View(ticketHistory);
         }
 

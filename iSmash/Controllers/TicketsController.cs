@@ -20,8 +20,8 @@ namespace iSmash.Controllers
         private RolesHelper rolesHelper = new RolesHelper();
         private TicketHelper ticketHelper = new TicketHelper();
         private TicketAttachment ticketAttachment = new TicketAttachment();
-        private  HistoryHelper historyHelper = new HistoryHelper();
-
+        private HistoryHelper historyHelper = new HistoryHelper();
+        private NotificationHelper notificationHelper = new NotificationHelper();
 
         public ActionResult Dashboard(int id)
         {
@@ -155,12 +155,9 @@ namespace iSmash.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.DeveloperId = new SelectList(rolesHelper.UsersInRole("Developer"), "Id", "FirstName", ticket.DeveloperId);
-            ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name", ticket.ProjectId);
-            ViewBag.SubmitterId = new SelectList(db.Users, "Id", "FirstName", ticket.SubmitterId);
+            ViewBag.DeveloperId = new SelectList(rolesHelper.UsersInRole("Developer"), "Id", "FullName", ticket.DeveloperId);
             ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
             ViewBag.TicketStatusId = new SelectList(db.TicketStatus, "Id", "Name", ticket.TicketStatusId);
-            ViewBag.TicketTypeId = new SelectList(db.TicketType, "Id", "Name", ticket.TicketTypeId);
             return View(ticket);
         }
 
@@ -181,7 +178,10 @@ namespace iSmash.Controllers
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
 
+                var newTicket = db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id == ticket.Id);
+
                 historyHelper.ManageHistoryRecordCreation(oldTicket, ticket);
+                notificationHelper.ManageNotifications(oldTicket, newTicket);
 
                 return RedirectToAction("Index", "TicketHistories");
 

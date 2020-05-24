@@ -74,8 +74,6 @@ namespace iSmash.Models
 
         public System.Data.Entity.DbSet<iSmash.Models.Ticket> Tickets { get; set; }
 
-        //public System.Data.Entity.DbSet<iSmash.Models.ApplicationUser> ApplicationUsers { get; set; }
-
         public System.Data.Entity.DbSet<iSmash.Models.TicketPriority> TicketPriorities { get; set; }
 
         public System.Data.Entity.DbSet<iSmash.Models.TicketStatus> TicketStatus { get; set; }
@@ -86,10 +84,7 @@ namespace iSmash.Models
 
         public System.Data.Entity.DbSet<iSmash.Models.TicketHistory> TicketHistories { get; set; }
 
-        //public System.Data.Entity.DbSet<iSmash.Models.ApplicationUser> ApplicationUsers { get; set; }
+        public System.Data.Entity.DbSet<iSmash.Models.TicketNotification> TicketNotifications { get; set; }
 
-        /*
-                public System.Data.Entity.DbSet<iSmash.Models.ApplicationUser> ApplicationUsers { get; set; }
-        */
     }
 }

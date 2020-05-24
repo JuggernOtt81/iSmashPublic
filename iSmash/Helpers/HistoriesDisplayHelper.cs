@@ -17,7 +17,8 @@ namespace iSmash.Helpers
             switch (ticketHistory.PropertyName)
             {
                 case "DeveloperId":
-                    data = db.Users.FirstOrDefault(u => u.Id == ticketHistory.NewValue).FullName;
+                    data = "Yellow Rubber Duck, help me PLEASE!";
+                        //db.Users.FirstOrDefault(u => u.Id == ticketHistory.NewValue).FullName;
                     break;
                 default: 
                     data = ticketHistory.NewValue;

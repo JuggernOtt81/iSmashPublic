@@ -296,5 +296,8 @@ namespace iSmash.Migrations
             }
         }
         #endregion
+
+        //add ticket notification seed
+
     }
 }
