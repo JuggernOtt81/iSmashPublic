@@ -170,27 +170,28 @@
         <div class="br-header-right">
             <nav class="nav">
 
-                <div class="dropdown">
-                    <div>
-                        <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-                            @{ var userHelper = new UserHelper(); }
+                
+            <div>
+                <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
+                    @{ var userHelper = new UserHelper(); }
 
-                            <span class="logged-name hidden-md-down">@userHelper.GetUserDisplayName()</span>
-                            <img src="@userHelper.GetUserAvatar()" class="wd-32 rounded-circle" alt="">
-                            <span class="square-10 bg-success"></span>
-                        </a>
-                    </div>
-                    <div class="dropdown-menu dropdown-menu-header wd-200">
-                        <ul class="list-unstyled user-profile-nav">
-                            <li><a href=""><i class="icon ion-ios-person"></i> Edit Profile</a></li>
-                            <li><a href=""><i class="icon ion-ios-gear"></i> Settings</a></li>
-                            <li><a href=""><i class="icon ion-ios-download"></i> Downloads</a></li>
-                            <li><a href=""><i class="icon ion-ios-star"></i> Favorites</a></li>
-                            <li><a href=""><i class="icon ion-ios-folder"></i> Collections</a></li>
-                            <li><a href=""><i class="icon ion-power"></i> Sign Out</a></li>
-                        </ul>
-                    </div>
+                    <span class="logged-name hidden-md-down">@userHelper.GetUserDisplayName()</span>
+                    <img src="@userHelper.GetUserAvatar()" class="wd-32 rounded-circle" alt="">
+                    @*<span class="square-10 bg-success"></span>*@
+                </a>
+
+
+            <div class="dropdown-menu dropdown-menu-header wd-200">
+                    <ul class="list-unstyled user-profile-nav">
+                        <li><a href=""><i class="icon ion-ios-person"></i> Edit Profile</a></li>
+                        <li><a href=""><i class="icon ion-ios-gear"></i> Settings</a></li>
+                        <li><a href=""><i class="icon ion-ios-download"></i> Downloads</a></li>
+                        <li><a href=""><i class="icon ion-ios-star"></i> Favorites</a></li>
+                        <li><a href=""><i class="icon ion-ios-folder"></i> Collections</a></li>
+                        <li><a href=""><i class="icon ion-power"></i> Sign Out</a></li>
+                    </ul>
                 </div>
+
             </nav>
             <div class="navicon-right">
                 <a id="btnRightMenu" href="" class="pos-relative">
@@ -617,9 +618,45 @@
     </div><!-- br-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
 
+    <section scripts>
+
+        <script src="~/Scripts/jquery.js"></script>
+
+        <script src="~/Scripts/popper.js"></script>
+        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/perfect-scrollbar.jquery.js"></script>
+        <script src="~/Scripts/moment.js"></script>
+        <script src="~/Scripts/jquery-ui.js"></script>
+        <script src="~/Scripts/jquery.switchButton.js"></script>
+        <script src="~/Scripts/jquery.peity.js"></script>
+        <script src="~/Scripts/chartist.js"></script>
+        <script src="~/Scripts/jquery.sparkline.min.js"></script>
+        <script src="~/Scripts/d3.js"></script>
+        <script src="~/Scripts/rickshaw.min.js"></script>
 
 
-    <script>
+        <script src="~/Scripts/bracket.js"></script>
+        <script src="~/Scripts/ResizeSensor.js"></script>
+        <script src="~/Scripts/dashboard.js"></script>
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
         $(function () {
             'use strict'
 
@@ -647,55 +684,11 @@
             }
         });
     </script>
-    @RenderSection("scripts", false)
-    }
+    @*@RenderSection("scripts", false)*@
+}
+
 </body>
 </html>
 
 
 
-
-@*<!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>@ViewBag.Title - My ASP.NET Application</title>
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-
-    </head>
-    <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>
-                    @Html.Partial("_LoginPartial")
-                </div>
-            </div>
-        </div>
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-            </footer>
-        </div>
-
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
-    </body>
-    </html>*@
