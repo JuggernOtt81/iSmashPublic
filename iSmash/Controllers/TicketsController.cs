@@ -16,13 +16,14 @@ namespace iSmash.Controllers
     public class TicketsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
         private ProjectsHelper projHelper = new ProjectsHelper();
         private RolesHelper rolesHelper = new RolesHelper();
         private TicketHelper ticketHelper = new TicketHelper();
         private TicketAttachment ticketAttachment = new TicketAttachment();
         private HistoryHelper historyHelper = new HistoryHelper();
         private NotificationHelper notificationHelper = new NotificationHelper();
-
+        //private RecordManager recordManager = new RecordManager();
         public ActionResult Dashboard(int id)
         {
             return View(db.Tickets.Find(id));
