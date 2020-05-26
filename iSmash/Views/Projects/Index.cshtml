@@ -60,12 +60,12 @@
                         <td class="td-narrow">
                             @Html.DisplayFor(modelItem => item.StatusLabel)
                         </td>
-                        @*<td class="td-mid">
+                        <td class="td-mid">
                             @{
                                 var pmName = db.Users.Find(item.ProjectManagerId).FullName;
                             }
                             @pmName
-                        </td>*@
+                        </td>
                         <td class="td-mid">
                             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                             @Html.ActionLink("Details", "Details", new { id = item.Id }) |

@@ -43,7 +43,7 @@
             @Html.DisplayName("UPDATED")
         </th>
         <th>
-            @Html.DisplayName("Is Archived?")
+            @Html.DisplayName("Archived?")
         </th>
         @if (User.IsInRole("ProjectManager") || User.IsInRole("Admin"))
         {
@@ -68,11 +68,12 @@
                 <th>
                 </th>
             }
-        }
-        else
-        {
-        <th>
-        </th>
+
+            else
+            {
+                <th>
+                </th>
+            }
         }
     </tr>
 

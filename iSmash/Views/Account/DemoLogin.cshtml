@@ -29,6 +29,8 @@
                     ;
                     @Html.Hidden("emailKey", "DemoAdminEmail")
                     <button type="submit" class="btn btn-primary btn-block" style="width:25%">Log in as Demo Admin</button>
+
+
                 }
             </div>
             <hr />
@@ -44,7 +46,7 @@
                     @Html.AntiForgeryToken()
                     ;
                     @Html.Hidden("emailKey", "DemoProjectManagerEmail")
-                <button type="submit" class="btn btn-primary btn-block" style="width:25%">Log in as Demo Project Manager</button>
+                <button type="submit" class="btn btn-dark btn-block" style="width:25%">Log in as Demo Project Manager</button>
                 }
             </div>
             <hr />
@@ -60,7 +62,7 @@
                     @Html.AntiForgeryToken()
                     ;
                     @Html.Hidden("emailKey", "DemoDeveloperEmail")
-                <button type="submit" class="btn btn-primary btn-block" style="width:25%">Log in as Demo Developer</button>
+                <button type="submit" class="btn btn-danger btn-block" style="width:25%">Log in as Demo Developer</button>
                 }
             </div>
             <hr />
@@ -69,14 +71,14 @@
     <div class="row">
         <div class="card-body">
             <h5>Submitter Demo</h5>
-            <p>complaints, requests, bug reports</p>
+            <p>complaints, requests, bug reports+</p>
             <div class="col-8 offset-2">
                 @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
                     ;
                     @Html.Hidden("emailKey", "DemoSubmitterEmail")
-                <button type="submit" class="btn btn-primary btn-block" style="width:25%">Log in as Demo Submitter</button>
+                <button type="submit" class="btn btn-info btn-block" style="width:25%">Log in as Demo Submitter</button>
                 }
             </div>
             <hr />

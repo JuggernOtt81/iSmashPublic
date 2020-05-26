@@ -170,27 +170,27 @@
         <div class="br-header-right">
             <nav class="nav">
 
-                
-            <div>
-                <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-                    @{ var userHelper = new UserHelper(); }
 
-                    <span class="logged-name hidden-md-down">@userHelper.GetUserDisplayName()</span>
-                    <img src="@userHelper.GetUserAvatar()" class="wd-32 rounded-circle" alt="">
-                    @*<span class="square-10 bg-success"></span>*@
-                </a>
+                <div>
+                    <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
+                        @{ var userHelper = new UserHelper(); }
+
+                        <span class="logged-name hidden-md-down">@userHelper.GetUserDisplayName()</span>
+                        <img src="@userHelper.GetUserAvatar()" class="wd-32 rounded-circle" alt="">
+                        @*<span class="square-10 bg-success"></span>*@
+                    </a>
 
 
-            <div class="dropdown-menu dropdown-menu-header wd-200">
-                    <ul class="list-unstyled user-profile-nav">
-                        <li><a href=""><i class="icon ion-ios-person"></i> Edit Profile</a></li>
-                        <li><a href=""><i class="icon ion-ios-gear"></i> Settings</a></li>
-                        <li><a href=""><i class="icon ion-ios-download"></i> Downloads</a></li>
-                        <li><a href=""><i class="icon ion-ios-star"></i> Favorites</a></li>
-                        <li><a href=""><i class="icon ion-ios-folder"></i> Collections</a></li>
-                        <li><a href=""><i class="icon ion-power"></i> Sign Out</a></li>
-                    </ul>
-                </div>
+                    <div class="dropdown-menu dropdown-menu-header wd-200">
+                        <ul class="list-unstyled user-profile-nav">
+                            <li><a href=""><i class="icon ion-ios-person"></i> Edit Profile</a></li>
+                            <li><a href=""><i class="icon ion-ios-gear"></i> Settings</a></li>
+                            <li><a href=""><i class="icon ion-ios-download"></i> Downloads</a></li>
+                            <li><a href=""><i class="icon ion-ios-star"></i> Favorites</a></li>
+                            <li><a href=""><i class="icon ion-ios-folder"></i> Collections</a></li>
+                            <li><a href=""><i class="icon ion-power"></i> Sign Out</a></li>
+                        </ul>
+                    </div>
 
             </nav>
             <div class="navicon-right">
@@ -621,32 +621,26 @@
     </div><!-- br-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
 
-    <section scripts>
-
-        <script src="~/Scripts/jquery.js"></script>
-
-        <script src="~/Scripts/popper.js"></script>
-        <script src="~/Scripts/bootstrap.js"></script>
-        <script src="~/Scripts/perfect-scrollbar.jquery.js"></script>
-        <script src="~/Scripts/moment.js"></script>
-        <script src="~/Scripts/jquery-ui.js"></script>
-        <script src="~/Scripts/jquery.switchButton.js"></script>
-        <script src="~/Scripts/jquery.peity.js"></script>
-        <script src="~/Scripts/chartist.js"></script>
-        <script src="~/Scripts/jquery.sparkline.min.js"></script>
-        <script src="~/Scripts/d3.js"></script>
-        <script src="~/Scripts/rickshaw.min.js"></script>
 
 
-        <script src="~/Scripts/bracket.js"></script>
-        <script src="~/Scripts/ResizeSensor.js"></script>
-        <script src="~/Scripts/dashboard.js"></script>
+    <script src="~/Scripts/jquery.js"></script>
+
+    <script src="~/Scripts/popper.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/perfect-scrollbar.jquery.js"></script>
+    <script src="~/Scripts/moment.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.switchButton.js"></script>
+    <script src="~/Scripts/jquery.peity.js"></script>
+    <script src="~/Scripts/chartist.js"></script>
+    <script src="~/Scripts/jquery.sparkline.min.js"></script>
+    <script src="~/Scripts/d3.js"></script>
+    <script src="~/Scripts/rickshaw.min.js"></script>
 
 
-
-
-
-    </section>
+    <script src="~/Scripts/bracket.js"></script>
+    <script src="~/Scripts/ResizeSensor.js"></script>
+    <script src="~/Scripts/dashboard.js"></script>
 
 
 
@@ -659,7 +653,12 @@
 
 
 
-<script>
+
+
+
+
+
+    <script>
         $(function () {
             'use strict'
 
@@ -687,8 +686,8 @@
             }
         });
     </script>
-    @*@RenderSection("scripts", false)*@
-}
+    @RenderSection("scripts", false)
+    }
 
 </body>
 </html>

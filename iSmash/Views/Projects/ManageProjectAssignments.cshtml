@@ -53,24 +53,27 @@
             <tbody>
                 @foreach (var user in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(model => user.RoleName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => user.FirstName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => user.Email)
-                        </td>
-                        <td>
-                            @foreach (var projName in user.ProjectNames)
-                            {
-                                @projName
-                                <br />
-                            }
-                        </td>
-                    </tr>
+                    if (user.RoleName == "Developer")
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(model => user.RoleName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => user.FirstName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => user.Email)
+                            </td>
+                            <td>
+                                @foreach (var projName in user.ProjectNames)
+                                {
+                                    @projName
+                                    <br/>
+                                }
+                            </td>
+                        </tr>
+                    }
                 }
             </tbody>
         </table>
