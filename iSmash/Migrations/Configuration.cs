@@ -1,3 +1,5 @@
+﻿using System.Web.Configuration;
+
 namespace iSmash.Migrations
 {
     using iSmash.Models;
@@ -151,6 +153,7 @@ namespace iSmash.Migrations
             //protected override void Seed(ApplicationDbContext context)
             var userStore = new UserStore<ApplicationUser>(context);
             var userManager = new UserManager<ApplicationUser>(userStore);
+            var demoPassword = WebConfigurationManager.AppSettings["DemoPassword"];
 
             if (!context.Users.Any(u => u.Email == "juggernott81@gmail.com"))
             {
@@ -172,7 +175,73 @@ namespace iSmash.Migrations
             }
             #endregion
 
+            if (!context.Users.Any(u => u.Email == "demoadmin@mailinator.com"))
+            {
+                //var user = new ApplicationUser
+                userManager.Create(new ApplicationUser()
+                {
+                    UserName = "demoadmin@mailinator.com",
+                    Email = "demoadmin@mailinator.com",
+                    FirstName = "Demo",
+                    LastName = "Admin",
+                    DisplayName = "DemoAdmin",
+                    AvatarPath = "/Avatars/defaultAvatar.png",
+                    EmailConfirmed = true
 
+
+                }, demoPassword);
+            }
+
+            if (!context.Users.Any(u => u.Email == "demoprojectmanager@mailinator.com"))
+            {
+                //var user = new ApplicationUser
+                userManager.Create(new ApplicationUser()
+                {
+                    UserName = "demoprojectmanager@mailinator.com",
+                    Email = "demoprojectmanager@mailinator.com",
+                    FirstName = "Demo",
+                    LastName = "ProjectManager",
+                    DisplayName = "DemoProjectManager",
+                    AvatarPath = "/Avatars/defaultAvatar.png",
+                    EmailConfirmed = true
+
+
+                }, demoPassword);
+            }
+
+            if (!context.Users.Any(u => u.Email == "demodeveloper@mailinator.com"))
+            {
+                //var user = new ApplicationUser
+                userManager.Create(new ApplicationUser()
+                {
+                    UserName = "demodeveloper@mailinator.com",
+                    Email = "demodeveloper@mailinator.com",
+                    FirstName = "Demo",
+                    LastName = "Developer",
+                    DisplayName = "DemoDeveloper",
+                    AvatarPath = "/Avatars/defaultAvatar.png",
+                    EmailConfirmed = true
+
+
+                }, demoPassword);
+            }
+
+            if (!context.Users.Any(u => u.Email == "demosubmitter@mailinator.com"))
+            {
+                //var user = new ApplicationUser
+                userManager.Create(new ApplicationUser()
+                {
+                    UserName = "demosubmitter@mailinator.com",
+                    Email = "demosubmitter@mailinator.com",
+                    FirstName = "Demo",
+                    LastName = "Submitter",
+                    DisplayName = "DemoSubmitter",
+                    AvatarPath = "/Avatars/defaultAvatar.png",
+                    EmailConfirmed = true
+
+
+                }, demoPassword);
+            }
 
 
             #region Add Role assignment here
@@ -194,7 +263,7 @@ namespace iSmash.Migrations
                 //attach role of admin to this very specific hard coded user
                 userManager.AddToRoles(user.Id, "Developer");
             }
-            
+
 
             if (!context.Users.Any(u => u.Email == "JasonTwichell@coderfoundry.com"))
             {
@@ -214,7 +283,7 @@ namespace iSmash.Migrations
                 //attach role of admin to this very specific hard coded user
                 userManager.AddToRoles(user.Id, "Developer");
             }
-            
+
 
             if (!context.Users.Any(u => u.Email == "Araynor@coderfoundry.com"))
             {
@@ -234,7 +303,7 @@ namespace iSmash.Migrations
                 //attach role of admin to this very specific hard coded user
                 userManager.AddToRoles(user.Id, "Submitter");
             }
-            
+
 
             if (!context.Users.Any(u => u.Email == "bdavis@coderfoundry.com"))
             {
@@ -254,7 +323,7 @@ namespace iSmash.Migrations
                 //attach role of admin to this very specific hard coded user
                 userManager.AddToRoles(user.Id, "ProjectManager");
             }
-            
+
 
             if (!context.Users.Any(u => u.Email == "kdoyle@coderfoundry.com"))
             {
@@ -274,7 +343,7 @@ namespace iSmash.Migrations
                 //attach role of admin to this very specific hard coded user
                 userManager.AddToRoles(user.Id, "Submitter");
             }
-            
+
 
             if (!context.Users.Any(u => u.Email == "nsanders@coderfoundry.com"))
             {

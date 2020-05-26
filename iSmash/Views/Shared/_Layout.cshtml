@@ -196,9 +196,12 @@
             <div class="navicon-right">
                 <a id="btnRightMenu" href="" class="pos-relative">
                     <i class="icon ion-ios-chatboxes-outline"></i>
-                    @if (MessageHelper.GetUnreadNotifications().Count > 0)
+                    @if (User.IsInRole("Admin") || User.IsInRole("ProjectManager") || User.IsInRole("Developer") || User.IsInRole("Submitter"))
                     {
-                        <span class="square-8 bg-danger pos-absolute t-15 r-0 rounded-circle"></span>
+                        if (MessageHelper.GetUnreadNotifications().Count > 0)
+                        {
+                            <span class="square-8 bg-danger pos-absolute t-15 r-0 rounded-circle"></span>
+                        }
                     }
                 </a>
             </div>

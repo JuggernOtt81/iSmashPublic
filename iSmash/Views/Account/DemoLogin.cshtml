@@ -1,0 +1,103 @@
+﻿@{ Layout = null;}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Demo Login</title>
+    
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/ionicons.css" rel="stylesheet" />
+    <link href="~/Content/select2.min.css" rel="stylesheet" />
+
+
+
+    <!-- Bracket CSS -->
+
+    <link href="~/Content/bracket.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="card-body">
+
+            <div class="col-8 offset-2">
+                <h5>Admin Demo</h5>
+                <p>top level user</p>
+                @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    ;
+                    @Html.Hidden("emailKey", "DemoAdminEmail")
+                    <button type="submit" class="btn btn-primary btn-block" style="width:25%">Log in as Demo Admin</button>
+                }
+            </div>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="card-body">
+            <h5>Project Manager Demo</h5>
+            <p>2nd level user</p>
+            <div class="col-8 offset-2">
+                @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    ;
+                    @Html.Hidden("emailKey", "DemoProjectManagerEmail")
+                <button type="submit" class="btn btn-primary btn-block" style="width:25%">Log in as Demo Project Manager</button>
+                }
+            </div>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="card-body">
+            <h5>Developer Demo</h5>
+            <p>production & fixes</p>
+            <div class="col-8 offset-2">
+                @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    ;
+                    @Html.Hidden("emailKey", "DemoDeveloperEmail")
+                <button type="submit" class="btn btn-primary btn-block" style="width:25%">Log in as Demo Developer</button>
+                }
+            </div>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="card-body">
+            <h5>Submitter Demo</h5>
+            <p>complaints, requests, bug reports</p>
+            <div class="col-8 offset-2">
+                @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    ;
+                    @Html.Hidden("emailKey", "DemoSubmitterEmail")
+                <button type="submit" class="btn btn-primary btn-block" style="width:25%">Log in as Demo Submitter</button>
+                }
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>
+    
+
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/popper.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+
+<script>
+    $(function () {
+        'use strict';
+
+        $('.select2').select2({
+            minimumResultsForSearch: Infinity
+        });
+    });
+</script>
+</body>
+</html>

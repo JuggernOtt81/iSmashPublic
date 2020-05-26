@@ -321,6 +321,7 @@
     <Content Include="img\screen8.png" />
     <Content Include="Global.asax" />
     <Content Include="img\favicons\site.webmanifest" />
+    <None Include="private.config" />
     <None Include="Properties\PublishProfiles\iSmash - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -431,6 +432,7 @@
     <Content Include="Views\TicketNotifications\Details.cshtml" />
     <Content Include="Views\TicketNotifications\Edit.cshtml" />
     <Content Include="Views\TicketNotifications\Index.cshtml" />
+    <Content Include="Views\Account\DemoLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
