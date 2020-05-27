@@ -86,5 +86,6 @@ namespace iSmash.Models
 
         public System.Data.Entity.DbSet<iSmash.Models.TicketNotification> TicketNotifications { get; set; }
 
+        //public System.Data.Entity.DbSet<iSmash.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
