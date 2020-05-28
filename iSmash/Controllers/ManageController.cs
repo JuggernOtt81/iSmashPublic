@@ -7,6 +7,11 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using iSmash.Models;
+using System.IO;
+using iSmash.Helpers;
+using iSmash.Models;
+using  iSmash.ViewModels;
+using  iSmash.Controllers;
 
 namespace iSmash.Controllers
 {
@@ -32,9 +37,9 @@ namespace iSmash.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -64,15 +69,17 @@ namespace iSmash.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
-            var model = new IndexViewModel
-            {
-                HasPassword = HasPassword(),
-                PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
-                TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
-                Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
-            };
-            return View(model);
+            //var model = new IndexViewModel
+            //{
+            //    HasPassword = HasPassword(),
+            //    PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
+            //    TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
+            //    Logins = await UserManager.GetLoginsAsync(userId),
+            //    BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+            //};
+            var userProfile = new EditProfileViewModel();
+            userProfile.Email = User.Identity.GetUserName();
+            return View(userProfile);
         }
 
         //
@@ -333,7 +340,7 @@ namespace iSmash.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -384,6 +391,41 @@ namespace iSmash.Controllers
             Error
         }
 
-#endregion
+
+
+
+
+        //
+        // POST: change avatar
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangeAvatar(EditProfileViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByEmailAsync(model.Email);
+
+                if (model.Avatar != null)
+                {
+                    var justFileName = Path.GetFileNameWithoutExtension(model.Avatar.FileName);
+                    justFileName = StringUtilities.URLFriendly(justFileName);
+                    justFileName = $"{justFileName}-{DateTime.Now.Ticks}";
+                    justFileName = $"{justFileName}{Path.GetExtension(model.Avatar.FileName)}";
+                    user.AvatarPath = $"/Avatars/{justFileName}";
+                    model.Avatar.SaveAs(Path.Combine(Server.MapPath("~/Avatars/"), justFileName));
+                }
+
+                await UserManager.UpdateAsync(user);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return RedirectToAction("Index");
+        }
+
+
+
+
+
+        #endregion
     }
 }

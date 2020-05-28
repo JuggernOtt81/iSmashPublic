@@ -13,7 +13,7 @@ namespace iSmash.Helpers
         {
             UserId = HttpContext.Current.User.Identity.GetUserId();
         }
-
+        
         public string GetUserDisplayName()
         {
             return db.Users.Find(UserId).DisplayName;
@@ -29,6 +29,13 @@ namespace iSmash.Helpers
             var db = new ApplicationDbContext();
             var pmName = db.Users.Find(id).FullName;
             return pmName;
+        }
+
+        public string ThisUser(string id)
+        {
+            var db = new ApplicationDbContext();
+            var thisUserId = db.Users.Find(id).ToString();
+            return thisUserId;
         }
 
     }

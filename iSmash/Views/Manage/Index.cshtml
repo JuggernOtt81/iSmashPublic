@@ -1,4 +1,4 @@
-﻿@model iSmash.Models.IndexViewModel
+﻿@model iSmash.Models.EditProfileViewModel
 @{
     ViewBag.Title = "Manage";
 }
@@ -13,21 +13,41 @@
         <dt>Password:</dt>
         <dd>
             [
-            @if (Model.HasPassword)
-            {
+            @*@if (Model.HasPassword)*@
+            
                 @Html.ActionLink("Change your password", "ChangePassword")
-            }
-            else
+            
+            @*else
             {
                 @Html.ActionLink("Create", "SetPassword")
-            }
+            }*@
             ]
         </dd>
-        <dt>External Logins:</dt>
+        
+    @using (Html.BeginForm("ChangeAvatar", "Manage", FormMethod.Post, new {enctype = "Multipart/form-data"}))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Email)
+
+        <div class="form-group">
+            <input type="file" name="Avatar" class="form-control"/>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Confirm" />
+            </div>
+        </div>
+
+    }
+        
+        
+
+        @*<dt>External Logins:</dt>
         <dd>
             @Model.Logins.Count [
             @Html.ActionLink("Manage", "ManageLogins") ]
-        </dd>
+        </dd>*@
         @*
             Phone Numbers can used as a second factor of verification in a two-factor authentication system.
              

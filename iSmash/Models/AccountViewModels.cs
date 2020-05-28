@@ -103,6 +103,15 @@ namespace iSmash.Models
 
     }
 
+    public class EditProfileViewModel
+    {
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+        public HttpPostedFileBase Avatar { get; set; }
+    }
+
     public class ResetPasswordViewModel
     {
         [Required]
