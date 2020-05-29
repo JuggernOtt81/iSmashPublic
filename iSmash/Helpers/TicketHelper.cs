@@ -54,12 +54,12 @@ namespace iSmash.Helpers
             }
             return myTickets;
         }
-        public ICollection<Ticket> ListUserTickets(string userId)
-        {
-            ApplicationUser user = db.Users.Find(userId);
-            var tickets = user.Ticket.ToList();
-            return tickets;
-        }
+        //public ICollection<Ticket> ListUserTickets(string userId)
+        //{
+        //    ApplicationUser user = db.Users.Find(userId);
+        //    var tickets = user.Ticket.ToList();
+        //    return tickets;
+        //}
         public void AddSubToTicket(string userId, int ticketId)
         {
             Ticket ticket = db.Tickets.Find(ticketId);
@@ -85,10 +85,10 @@ namespace iSmash.Helpers
         //    return ticketUsers;
         //}
 
-        public ICollection<ApplicationUser> UsersNotOnProject(int ticketId)
-        {
-            return db.Users.Where(u => u.Ticket.All(p => p.Id != ticketId)).ToList();
-        }
+        //public ICollection<ApplicationUser> UsersNotOnProject(int ticketId)
+        //{
+        //    return db.Users.Where(u => u.Ticket.All(p => p.Id != ticketId)).ToList();
+        //}
 
         public List<Ticket> GetMyTickets()
         {

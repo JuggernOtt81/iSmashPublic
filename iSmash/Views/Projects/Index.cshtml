@@ -1,5 +1,7 @@
 ﻿@using iSmash.Models
-@model IEnumerable<Project>
+@using System.Diagnostics.Eventing.Reader
+@model IEnumerable<iSmash.Models.Project>
+@*@model IEnumerable<Project>*@
 @{
     ViewBag.Title = "Index";
 }
@@ -18,26 +20,29 @@
     <div class="table-wrapper">
         <table id="datatable1" class="table display responsive nowrap">
             <thead>
-                <tr>
-                    <th class="td-narrow">
-                        @Html.DisplayName("Title")
-                    </th>
-                    <th class="td-wide">
-                        @Html.DisplayName("Description")
-                    </th>
-                    <th class="td-narrow">
-                        @Html.DisplayName("Priority")
-                    </th>
-                    <th class="td-narrow">
-                        @Html.DisplayName("Status")
-                    </th>
-                    <th class="td-mid">
-                        @Html.DisplayName("Proj Mgr")
-                    </th>
-                    <th class="td-mid">
-                        @Html.DisplayName("Actions")
-                    </th>
-                </tr>
+            <tr>
+                @*<th class="td-narrow">
+                    @Html.DisplayName("Id")
+                </th>*@
+                <th class="td-narrow">
+                    @Html.DisplayName("Title")
+                </th>
+                <th class="td-wide">
+                    @Html.DisplayName("Description")
+                </th>
+                <th class="td-narrow">
+                    @Html.DisplayName("Priority")
+                </th>
+                <th class="td-narrow">
+                    @Html.DisplayName("Status")
+                </th>
+                <th class="td-mid">
+                    @Html.DisplayName("Proj Mgr")
+                </th>
+                <th class="td-mid">
+                    @Html.DisplayName("Actions")
+                </th>
+            </tr>
             </thead>
 
             <tbody>
@@ -48,12 +53,15 @@
                 @foreach (var item in Model)
                 {
                     <tr>
+                        @*<td class="td-wide">
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>*@
                         <td class="td-narrow">
                             @* should be clickable *@
-                            @Html.DisplayFor(modelItem => item.Name)
+                            @Html.DisplayFor(modelItem => item.Name, new {data_order = item.Id})
                         </td>
                         <td class="td-wide">
-                            @Html.DisplayFor(modelItem => item.Description)
+                            @Html.DisplayFor(modelItem => item.Description, new { data_order = item.Id })
                         </td>
                         <td class="td-narrow">
                             @Html.DisplayFor(modelItem => item.Priority)
@@ -68,9 +76,9 @@
                             @pmName
                         </td>
                         <td class="td-mid">
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
+                            @Html.ActionLink("Details", "Details", new {id = item.Id}) |
+                            @Html.ActionLink("Delete", "Delete", new {id = item.Id})
                         </td>
                     </tr>
                 }
@@ -80,30 +88,39 @@
 </div>
 
 @section scripts{
-    <script src="~/Scripts/jquery.js"></script>
-    <script src="~/Scripts/popper.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
-    <script src="~/Scripts/perfect-scrollbar.jquery.js"></script>
-    <script src="~/Scripts/moment.js"></script>
-    <script src="~/Scripts/jquery-ui.js"></script>
-    <script src="~/Scripts/jquery.switchButton.js"></script>
-    <script src="~/Scripts/jquery.peity.js"></script>
+    @*<script src="~/Scripts/jquery.js"></script>*@
+    @*<script src="~/Scripts/popper.js"></script>*@
+    @*<script src="~/Scripts/bootstrap.js"></script>*@
+    @*<script src="~/Scripts/perfect-scrollbar.jquery.js"></script>*@
+    @*<script src="~/Scripts/moment.js"></script>*@
+    @*<script src="~/Scripts/jquery-ui.js"></script>*@
+    @*<script src="~/Scripts/jquery.switchButton.js"></script>*@
+    @*<script src="~/Scripts/jquery.peity.js"></script>*@
     <script src="~/Scripts/highlight.pack.js"></script>
     <script src="~/Scripts/jquery.dataTables.js"></script>
     <script src="~/Scripts/dataTables.responsive.js"></script>
     <script src="~/Scripts/select2.min.js"></script>
-    <script src="~/Scripts/bracket.js"></script>
+    @*<script src="~/Scripts/bracket.js"></script>*@
 
     <script>
-        $(function () {
+        $(function() {
             'use strict';
 
             $('#datatable1').DataTable({
+                //"columnDefs": [
+                //    {
+                //        "targets": [0],
+                //        "visible": false,
+                //        "searchable": false
+
+                //    }
+                //],
                 responsive: true,
                 language: {
                     searchPlaceholder: 'Search...',
                     sSearch: '',
-                    lengthMenu: '_MENU_ items/page',
+                    lengthMenu: '_MENU_ items/page'
+
                 }
             });
 
@@ -113,7 +130,7 @@
                 responsive: true
             });
 
-            // Select2
+            //Select2
             $('.dataTables_length select').select2({ minimumResultsForSearch: 2 });
 
         });

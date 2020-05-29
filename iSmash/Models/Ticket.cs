@@ -33,7 +33,6 @@ namespace iSmash.Models
         public virtual ApplicationUser Submitter { get; set; }
         public virtual ApplicationUser Developer { get; set; }
         //public virtual ICollection<ApplicationUser> Users { get; set; }
-        public virtual ICollection<Ticket> Tickets { get; set; }
         public virtual ICollection<TicketAttachment> Attachments { get; set; }
         public virtual ICollection<TicketComment> TicketComments { get; set; }
         public virtual ICollection<TicketHistory> Histories { get; set; }
@@ -43,13 +42,10 @@ namespace iSmash.Models
         public Ticket()
         {
             //Users = new HashSet<ApplicationUser>();
-            Tickets = new HashSet<Ticket>();
             Attachments = new HashSet<TicketAttachment>();
             TicketComments = new HashSet<TicketComment>();
             Histories = new HashSet<TicketHistory>();
             Notifications = new HashSet<TicketNotification>();
         }
-
-
     }
 }

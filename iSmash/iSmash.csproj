@@ -212,7 +212,14 @@
     <Compile Include="ViewModels\ProjectUsersViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Avatars\AvatarBlackInverted.png" />
+    <Content Include="Avatars\AvatarBlue.png" />
+    <Content Include="Avatars\AvatarGreen.png" />
+    <Content Include="Avatars\AvatarInfiniteCode.png" />
+    <Content Include="Avatars\AvatarRed.png" />
+    <Content Include="Avatars\AvatarWhiteInverted.png" />
     <Content Include="Avatars\defaultAvatar.png" />
+    <Content Include="Avatars\Infinity-loop - PNG.png" />
     <Content Include="Content\bracket.css" />
     <Content Include="Content\chartist.css" />
     <Content Include="Content\font-awesome.css" />

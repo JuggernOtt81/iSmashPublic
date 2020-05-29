@@ -14,6 +14,8 @@ namespace iSmash.Migrations
 
     internal sealed class Configuration : DbMigrationsConfiguration<iSmash.Models.ApplicationDbContext>
     {
+        ApplicationDbContext db = new ApplicationDbContext();
+        ApplicationUser user = new ApplicationUser();
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
@@ -57,7 +59,7 @@ namespace iSmash.Migrations
                     FirstName = "Lawson",
                     LastName = "Ott",
                     DisplayName = "JuggernOtt81",
-                    AvatarPath = "/Avatars/defaultAvatar.png",
+                    AvatarPath = "/Avatars/AvatarInfiniteCode.png",
                     EmailConfirmed = true
                 };
                 userManager.Create(user, "Abc&123");
@@ -72,7 +74,7 @@ namespace iSmash.Migrations
                     FirstName = "Demo",
                     LastName = "Admin",
                     DisplayName = "DemoAdmin",
-                    AvatarPath = "/Avatars/defaultAvatar.png",
+                    AvatarPath = "/Avatars/AvatarBlackInverted.png",
                     EmailConfirmed = true
                 };
                 userManager.Create(user, demoPassword);
@@ -87,7 +89,7 @@ namespace iSmash.Migrations
                     FirstName = "Demo",
                     LastName = "ProjectManager",
                     DisplayName = "DemoProjectManager",
-                    AvatarPath = "/Avatars/defaultAvatar.png",
+                    AvatarPath = "/Avatars/AvatarRed.png",
                     EmailConfirmed = true
                 };
                 userManager.Create(user, demoPassword);
@@ -102,7 +104,7 @@ namespace iSmash.Migrations
                     FirstName = "Demo",
                     LastName = "Developer",
                     DisplayName = "DemoDeveloper",
-                    AvatarPath = "/Avatars/defaultAvatar.png",
+                    AvatarPath = "/Avatars/AvatarBlue.png",
                     EmailConfirmed = true
                 };
                 userManager.Create(user, demoPassword);
@@ -117,102 +119,35 @@ namespace iSmash.Migrations
                     FirstName = "Demo",
                     LastName = "Submitter",
                     DisplayName = "DemoSubmitter",
-                    AvatarPath = "/Avatars/defaultAvatar.png",
+                    AvatarPath = "/Avatars/AvatarGreen.png",
                     EmailConfirmed = true
                 };
                 userManager.Create(user, demoPassword);
                 userManager.AddToRoles(user.Id, "Submitter");
             }
-            if (!context.Users.Any(u => u.Email == "arussell@coderfoundry.com"))
+
+            context.SaveChanges();
+            #endregion
+
+            #region seed some projects 
+            for (int i = 0; i < 25; i++)
             {
-                var user = new ApplicationUser
+                string name = "Demo Project " + i;
+                if (!context.Projects.Any(p => p.Name == name))
                 {
-                    UserName = "arussell@coderfoundry.com",
-                    Email = "arussell@coderfoundry.com",
-                    FirstName = "Andrew",
-                    LastName = "Russell",
-                    DisplayName = "Drew",
-                    AvatarPath = "/Avatars/defaultAvatar.png",
-                    EmailConfirmed = true
-                };
-                userManager.Create(user, "Abc&123");
-                userManager.AddToRoles(user.Id, "Developer");
+                    context.Projects.AddOrUpdate(p => p.Name, new Project
+                    {
+                        Name = name,
+                        Priority = 0,
+                        Status = 0,
+                        Description = "this is the description of " + name,
+                        ProjectManagerId = db.Users.FirstOrDefault(u => u.Email == "DemoProjectManager@mailinator.com").Id,
+                        Created = DateTime.Now
+                    });
+                }
             }
-            if (!context.Users.Any(u => u.Email == "JasonTwichell@coderfoundry.com"))
-            {
-                var user = new ApplicationUser
-                {
-                    UserName = "JasonTwichell@coderfoundry.com",
-                    Email = "JasonTwichell@coderfoundry.com",
-                    FirstName = "Jason",
-                    LastName = "Twichell",
-                    DisplayName = "JSON",
-                    AvatarPath = "/Avatars/defaultAvatar.png",
-                    EmailConfirmed = true
-                };
-                userManager.Create(user, "Abc&123");
-                userManager.AddToRoles(user.Id, "Developer");
-            }
-            if (!context.Users.Any(u => u.Email == "Araynor@coderfoundry.com"))
-            {
-                var user = new ApplicationUser
-                {
-                    UserName = "Araynor@coderfoundry.com",
-                    Email = "Araynor@coderfoundry.com",
-                    FirstName = "Antonio",
-                    LastName = "Raynor",
-                    DisplayName = "FixItAgainTony",
-                    AvatarPath = "/Avatars/defaultAvatar.png",
-                    EmailConfirmed = true
-                };
-                userManager.Create(user, "Abc&123");
-                userManager.AddToRoles(user.Id, "Submitter");
-            }
-            if (!context.Users.Any(u => u.Email == "bdavis@coderfoundry.com"))
-            {
-                var user = new ApplicationUser
-                {
-                    UserName = "bdavis@coderfoundry.com",
-                    Email = "bdavis@coderfoundry.com",
-                    FirstName = "Bobby",
-                    LastName = "Davis",
-                    DisplayName = "BossMan",
-                    AvatarPath = "/Avatars/defaultAvatar.png",
-                    EmailConfirmed = true
-                };
-                userManager.Create(user, "Abc&123");
-                userManager.AddToRoles(user.Id, "ProjectManager");
-            }
-            if (!context.Users.Any(u => u.Email == "kdoyle@coderfoundry.com"))
-            {
-                var user = new ApplicationUser
-                {
-                    UserName = "kdoyle@coderfoundry.com",
-                    Email = "kdoyle@coderfoundry.com",
-                    FirstName = "Kevin",
-                    LastName = "Doyle",
-                    DisplayName = "SmileyMan",
-                    AvatarPath = "/Avatars/defaultAvatar.png",
-                    EmailConfirmed = true
-                };
-                userManager.Create(user, "Abc&123");
-                userManager.AddToRoles(user.Id, "Submitter");
-            }
-            if (!context.Users.Any(u => u.Email == "nsanders@coderfoundry.com"))
-            {
-                var user = new ApplicationUser
-                {
-                    UserName = "nsanders@coderfoundry.com",
-                    Email = "nsanders@coderfoundry.com",
-                    FirstName = "Natosha",
-                    LastName = "Sanders",
-                    DisplayName = "GateKeeper",
-                    AvatarPath = "/Avatars/defaultAvatar.png",
-                    EmailConfirmed = true
-                };
-                userManager.Create(user, "Abc&123");
-                userManager.AddToRoles(user.Id, "Submitter");
-            }
+
+            context.SaveChanges();
             #endregion
 
             #region tickets(type, priority, status)
@@ -294,6 +229,37 @@ namespace iSmash.Migrations
             if (!context.TicketStatus.Any(r => r.Name == "Archived"))
             {
                 context.TicketStatus.AddOrUpdate(new TicketStatus { Name = "Archived" });
+            }
+            context.SaveChanges();
+            #endregion
+
+
+
+            #region seed some tickets
+            string pmi = db.Users.FirstOrDefault(u => u.Email == "DemoProjectManager@mailinator.com").Id;
+            var status = db.TicketStatus.FirstOrDefault(t => t.Name == "NEW");
+            var priority = db.TicketPriorities.FirstOrDefault(t => t.Name == "TOP");
+            var type = db.TicketType.FirstOrDefault(t => t.Name == "Other");
+            var dev = db.Users.FirstOrDefault(u => u.Email == "DemoDeveloper@mailinator.com");
+            var sub = db.Users.FirstOrDefault(u => u.Email == "DemoSubmitter@mailinator.com");
+            var projId = db.Projects.FirstOrDefault(p => p.Id > 0);
+
+            for (int i = 0; i < 25; i++)
+            {
+                string title = "Demo Ticket " + i;
+
+                context.Tickets.AddOrUpdate(t => t.Title, new Ticket
+                {
+                    Title = title,
+                    Description = title + " has a unique description here.",
+                    Created = DateTime.Now,
+                    TicketPriorityId = priority.Id,
+                    TicketStatusId = status.Id,
+                    TicketTypeId = type.Id,
+                    DeveloperId = dev.Id,
+                    SubmitterId = sub.Id,
+                    ProjectId = projId.Id
+                });
             }
             #endregion
         }

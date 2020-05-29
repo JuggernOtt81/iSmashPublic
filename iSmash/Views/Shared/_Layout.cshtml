@@ -637,25 +637,11 @@
     <script src="~/Scripts/d3.js"></script>
     <script src="~/Scripts/rickshaw.min.js"></script>
 
-
+@RenderSection("scripts", false)
     <script src="~/Scripts/bracket.js"></script>
     <script src="~/Scripts/ResizeSensor.js"></script>
     <script src="~/Scripts/dashboard.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 
 
     <script>
@@ -685,9 +671,10 @@
                 }
             }
         });
+
+
     </script>
-    @RenderSection("scripts", false)
-    }
+
 
 </body>
 </html>

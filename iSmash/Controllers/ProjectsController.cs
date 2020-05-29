@@ -74,7 +74,8 @@ namespace iSmash.Controllers
         public ActionResult Index()
         {
 
-            return View(db.Projects.ToList());
+            //return View(db.Projects.ToList());
+            return View(db.Projects.OrderBy(p => p.Id).ToList());
         }
 
         // GET: MyProjectsList

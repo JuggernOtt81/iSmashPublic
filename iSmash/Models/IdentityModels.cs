@@ -29,7 +29,6 @@ namespace iSmash.Models
         }
 
         public virtual ICollection<Project> Projects { get; set; }
-        public virtual ICollection<Ticket> Ticket { get; set; }
         public virtual ICollection<TicketComment> TicketComments { get; set; }
         public virtual ICollection<TicketAttachment> Attachments { get; set; }
         public virtual ICollection<TicketHistory> Histories { get; set; }
@@ -38,7 +37,6 @@ namespace iSmash.Models
         public ApplicationUser()
         {
             Projects = new HashSet<Project>();
-            Ticket = new HashSet<Ticket>();
             TicketComments = new HashSet<TicketComment>();
             Attachments = new HashSet<TicketAttachment>();
             Histories = new HashSet<TicketHistory>();
