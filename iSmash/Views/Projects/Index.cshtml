@@ -6,24 +6,20 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 @if (User.IsInRole("ProjectManager") || User.IsInRole("Admin"))
 {
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
 }
-<div class="br-section-wrapper">
-    <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10">Basic Responsive DataTable</h6>
-    <p class="mg-b-25 mg-lg-b-50">Searching, ordering and paging goodness will be immediately added to the table, as shown in this example.</p>
 
-    <div class="table-wrapper">
-        <table id="datatable1" class="table display responsive nowrap">
-            <thead>
+<div class="table-wrapper">
+    <table id="datatable1" class="table display responsive nowrap">
+        <thead>
             <tr>
                 @*<th class="td-narrow">
-                    @Html.DisplayName("Id")
-                </th>*@
+                        @Html.DisplayName("Id")
+                    </th>*@
                 <th class="td-narrow">
                     @Html.DisplayName("Title")
                 </th>
@@ -43,97 +39,45 @@
                     @Html.DisplayName("Actions")
                 </th>
             </tr>
-            </thead>
+        </thead>
 
-            <tbody>
-                @{
-                    var db = new ApplicationDbContext();
+        <tbody>
+            @{
+                var db = new ApplicationDbContext();
 
-                }
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        @*<td class="td-wide">
+            }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @*<td class="td-wide">
                             @Html.DisplayFor(modelItem => item.Id)
                         </td>*@
-                        <td class="td-narrow">
-                            @* should be clickable *@
-                            @Html.DisplayFor(modelItem => item.Name, new {data_order = item.Id})
-                        </td>
-                        <td class="td-wide">
-                            @Html.DisplayFor(modelItem => item.Description, new { data_order = item.Id })
-                        </td>
-                        <td class="td-narrow">
-                            @Html.DisplayFor(modelItem => item.Priority)
-                        </td>
-                        <td class="td-narrow">
-                            @Html.DisplayFor(modelItem => item.StatusLabel)
-                        </td>
-                        <td class="td-mid">
-                            @{
-                                var pmName = db.Users.Find(item.ProjectManagerId).FullName;
-                            }
-                            @pmName
-                        </td>
-                        <td class="td-mid">
-                            @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
-                            @Html.ActionLink("Details", "Details", new {id = item.Id}) |
-                            @Html.ActionLink("Delete", "Delete", new {id = item.Id})
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+                    <td class="td-narrow" data-order=@item.Id>
+                        @* should be clickable *@
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td class="td-wide" data-order=@item.Id>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td class="td-narrow">
+                        @Html.DisplayFor(modelItem => item.Priority)
+                    </td>
+                    <td class="td-narrow">
+                        @Html.DisplayFor(modelItem => item.StatusLabel)
+                    </td>
+                    <td class="td-mid">
+                        @{
+                            var pmName = db.Users.Find(item.ProjectManagerId).FullName;
+                        }
+                        @pmName
+                    </td>
+                    <td class="td-mid">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
-
-@section scripts{
-    @*<script src="~/Scripts/jquery.js"></script>*@
-    @*<script src="~/Scripts/popper.js"></script>*@
-    @*<script src="~/Scripts/bootstrap.js"></script>*@
-    @*<script src="~/Scripts/perfect-scrollbar.jquery.js"></script>*@
-    @*<script src="~/Scripts/moment.js"></script>*@
-    @*<script src="~/Scripts/jquery-ui.js"></script>*@
-    @*<script src="~/Scripts/jquery.switchButton.js"></script>*@
-    @*<script src="~/Scripts/jquery.peity.js"></script>*@
-    <script src="~/Scripts/highlight.pack.js"></script>
-    <script src="~/Scripts/jquery.dataTables.js"></script>
-    <script src="~/Scripts/dataTables.responsive.js"></script>
-    <script src="~/Scripts/select2.min.js"></script>
-    @*<script src="~/Scripts/bracket.js"></script>*@
-
-    <script>
-        $(function() {
-            'use strict';
-
-            $('#datatable1').DataTable({
-                //"columnDefs": [
-                //    {
-                //        "targets": [0],
-                //        "visible": false,
-                //        "searchable": false
-
-                //    }
-                //],
-                responsive: true,
-                language: {
-                    searchPlaceholder: 'Search...',
-                    sSearch: '',
-                    lengthMenu: '_MENU_ items/page'
-
-                }
-            });
-
-            $('#datatable2').DataTable({
-                bLengthChange: false,
-                searching: false,
-                responsive: true
-            });
-
-            //Select2
-            $('.dataTables_length select').select2({ minimumResultsForSearch: 2 });
-
-        });
-    </script>
-}
-
