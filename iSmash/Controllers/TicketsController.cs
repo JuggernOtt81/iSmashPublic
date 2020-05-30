@@ -129,7 +129,10 @@ namespace iSmash.Controllers
         {
             if (ModelState.IsValid)
             {
-                ticket.TicketPriorityId = 1;
+                ticket.TicketPriorityId = 0;
+                ticket.TicketPriority = null;
+                ticket.TicketStatusId = 0;
+                ticket.TicketStatus = null;
                 ticket.Created = DateTime.Now;
                 ticket.Updated = null;
                 ticket.SubmitterId = User.Identity.GetUserId();

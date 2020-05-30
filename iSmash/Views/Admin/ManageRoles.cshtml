@@ -36,29 +36,37 @@
         <table id="datatable1" class="table display responsive nowrap">
             <thead>
                 <tr>
+
                     <th>
-                        @Html.DisplayName("Full Name")
+                        @Html.DisplayName("ROLE")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Name")
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Email)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.RoleName)
-                    </th>
+                    @*<th>
+                        @Html.DisplayName("Id")
+                    </th>*@
                 </tr>
 
                 @foreach (var user in Model)
                 {
                     <tr>
+
+                        <td>
+                            @Html.DisplayFor(model => user.RoleName)
+                        </td>
                         <td>
                             @Html.DisplayFor(model => user.FirstName)
                         </td>
                         <td>
                             @Html.DisplayFor(model => user.Email)
                         </td>
-                        <td>
-                            @Html.DisplayFor(model => user.RoleName)
-                        </td>
+                        @*<td>
+                            @Html.DisplayFor(model => user.Id)
+                        </td>*@
                     </tr>
                 }
         </table>
@@ -67,5 +75,5 @@
 }
 else
 {
-    <img src="~/img/HaHaHaMovieReferences.gif" />
+    <img src="~/img/HaHaHaMovieReferences.gif" /><hr/><p>Your current role is NOT AUTHORIZED to view this content.</p>
 }

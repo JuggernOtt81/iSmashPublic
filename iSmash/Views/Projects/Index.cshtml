@@ -63,13 +63,21 @@
                         @Html.DisplayFor(modelItem => item.Priority)
                     </td>
                     <td class="td-narrow">
-                        @Html.DisplayFor(modelItem => item.StatusLabel)
+                        @Html.DisplayFor(modelItem => item.Status)
                     </td>
                     <td class="td-mid">
                         @{
-                            var pmName = db.Users.Find(item.ProjectManagerId).FullName;
+                            string pmName = ""; 
+                            if (db.Users.Find(item.ProjectManagerId) != null)
+                            {
+                                pmName = db.Users.Find(item.ProjectManagerId).FullName;
+                            }
+                            else
+                            {
+                                pmName = "unassigned";
+                            }
+                            @pmName;
                         }
-                        @pmName
                     </td>
                     <td class="td-mid">
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

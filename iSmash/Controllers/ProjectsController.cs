@@ -15,11 +15,12 @@ namespace iSmash.Controllers
 {
     public class ProjectsController : Controller
     {
+        private ApplicationUser user = new ApplicationUser();
         private ApplicationDbContext db = new ApplicationDbContext();
         private ProjectsHelper projHelper = new ProjectsHelper();
         private RolesHelper rolesHelper = new RolesHelper();
-            
-        [Authorize(Roles ="ProjectManager, Admin")]
+
+        [Authorize(Roles = "ProjectManager, Admin")]
         public ActionResult ManageProjectAssignments()
         {
             var emptyCustomUserData = new List<CustomUserData>();
@@ -30,7 +31,7 @@ namespace iSmash.Controllers
 
             //load a multi select of projects
             ViewBag.ProjectIds = new MultiSelectList(db.Projects, "Id", "Name");
-            
+
             foreach (var user in users)
             {
                 emptyCustomUserData.Add(new CustomUserData
@@ -60,9 +61,9 @@ namespace iSmash.Controllers
                 return RedirectToAction("ManageProjectAssignments");
             }
             //add each SELECTED USER to each SELECTED PROJECT
-            foreach(var userId in userIds)
+            foreach (var userId in userIds)
             {
-                foreach(var projectId in projectIds)
+                foreach (var projectId in projectIds)
                 {
                     projHelper.AddUserToProject(userId, projectId);
                 }
@@ -137,10 +138,10 @@ project, HttpPostedFileBase image)
             {
                 //project.Name = Name;
                 //project.Description = Description;
-                //project.ProjectManagerId = ProjectManagerId;
+                project.ProjectManagerId = "unassigned";
                 project.Created = DateTime.Now;
-                //project.Updated = Updated;
-                //project.IsArchived = IsArchived;
+                project.PriorityLabel = "unassigned";
+                project.StatusLabel = "unassigned";
 
                 db.Projects.Add(project);
                 db.SaveChanges();
@@ -170,11 +171,11 @@ project, HttpPostedFileBase image)
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Priority,PriorityLabel,Status,StausLabel,Created,Name,Description,ProjectManagerId,IsArchived")] Project project)
+        public ActionResult Edit([Bind(Include = "Id,Priority,PriorityLabel,Status,StatusLabel,Created,Name,Description,ProjectManagerId,IsArchived")] Project project)
         {
             if (ModelState.IsValid)
             {
-                
+
                 project.Updated = DateTime.Now;
                 db.Entry(project).State = EntityState.Modified;
 

@@ -28,10 +28,7 @@ namespace iSmash.Controllers
                 });
             }
 
-            //setup some data that can be used inside the view
-            //left panel - listbox in the view
             ViewBag.UserIds = new MultiSelectList(db.Users, "Id", "Email");
-            //right panel - dropdown list
             ViewBag.RoleName = new SelectList(db.Roles, "Name", "Name");
 
             return View(viewData);
@@ -63,9 +60,4 @@ namespace iSmash.Controllers
             return RedirectToAction("ManageRoles");
         }
     }
-
-
-
-
-
 }

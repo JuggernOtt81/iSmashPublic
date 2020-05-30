@@ -43,7 +43,7 @@
     <link href="~/Content/github.css" rel="stylesheet" />
 
     <!-- Bracket CSS -->
-    <link rel="stylesheet" href="../css/bracket.css">
+    <link href="~/Content/bracket.css" rel="stylesheet" />
 </head>
 
 
@@ -84,7 +84,7 @@
 
                     </div>
                 </div>
-                <hr/>
+                <hr />
                 <div class="row">
                     <button type="submit" class="btn btn-outline-dark">Save</button>
                 </div>
@@ -103,7 +103,7 @@
                 {
                     <tr>
                         <td>
-                            <img src="@AttachmentHelper.ShowIcon(attachment.FilePath)"/>
+                            <img src="@AttachmentHelper.ShowIcon(attachment.FilePath)" />
                         </td>
                         <td>
                             <a target="_blank" href="@Url.Content(attachment.FilePath)">@attachment.FileName</a>
@@ -111,17 +111,28 @@
                     </tr>
                 }
             </table>
-
         </div><!-- card-body -->
     </div><!-- card -->
 </div><!-- col -->
-<script src="~/Scripts/jquery.js"></script>
-<script src="~/Scripts/popper.js"></script>
-<script src="~/Scripts/bootstrap.js"></script>
-<script src="~/Scripts/perfect-scrollbar.jquery.js"></script>
-<script src="~/Scripts/moment.js"></script>
-<script src="~/Scripts/jquery-ui.js"></script>
-<script src="~/Scripts/jquery.switchButton.js"></script>
-<script src="~/Scripts/jquery.peity.js"></script>
-<script src="~/Scripts/highlight.pack.js"></script>
-<script src="~/Scripts/bracket.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+@*<script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/popper.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/perfect-scrollbar.jquery.js"></script>
+    <script src="~/Scripts/moment.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.switchButton.js"></script>
+    <script src="~/Scripts/jquery.peity.js"></script>
+    <script src="~/Scripts/highlight.pack.js"></script>
+    <script src="~/Scripts/bracket.js"></script>*@
