@@ -179,6 +179,7 @@
     <Compile Include="Helpers\HistoryHelper.cs" />
     <Compile Include="Helpers\MessageHelper.cs" />
     <Compile Include="Helpers\NotificationHelper.cs" />
+    <Compile Include="Models\EmailModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\ProjectViewModel.cs" />
     <Compile Include="ViewModels\TicketIndexViewModel.cs" />
