@@ -72,7 +72,6 @@ namespace iSmash.Controllers
 
         // GET: Tickets
 
-
         public ActionResult Index()
         {
             var tickets = db.Tickets.Include(t => t.Developer).Include(t => t.Project).Include(t => t.Submitter).Include(t => t.TicketPriority).Include(t => t.TicketStatus).Include(t => t.TicketType);

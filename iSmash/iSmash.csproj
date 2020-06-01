@@ -213,14 +213,33 @@
     <Compile Include="ViewModels\ProjectUsersViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Avatars\android-637261749539235286.png" />
     <Content Include="Avatars\AvatarBlackInverted.png" />
     <Content Include="Avatars\AvatarBlue.png" />
     <Content Include="Avatars\AvatarGreen.png" />
     <Content Include="Avatars\AvatarInfiniteCode.png" />
     <Content Include="Avatars\AvatarRed.png" />
     <Content Include="Avatars\AvatarWhiteInverted.png" />
+    <Content Include="Avatars\c-sharp-637261769553523521.png" />
+    <Content Include="Avatars\css3.png" />
+    <Content Include="Avatars\dark-denim-3-637261746491714741.png" />
+    <Content Include="Avatars\defaultAvatar - Copy %282%29.png" />
+    <Content Include="Avatars\defaultAvatar - Copy %283%29.png" />
+    <Content Include="Avatars\defaultAvatar - Copy %284%29.png" />
+    <Content Include="Avatars\defaultAvatar - Copy %286%29.png" />
+    <Content Include="Avatars\defaultavatar-copy-637262773539874306.png" />
+    <Content Include="Avatars\defaultavatar-copy-7-637262772828303967.png" />
     <Content Include="Avatars\defaultAvatar.png" />
-    <Content Include="Avatars\Infinity-loop - PNG.png" />
+    <Content Include="Avatars\get-buckled-or-get-knuckled-637261746841178934.png" />
+    <Content Include="Avatars\html5.png" />
+    <Content Include="Avatars\infinity-loop-png-637262776360136131.png" />
+    <Content Include="Avatars\iOS.png" />
+    <Content Include="Avatars\javascript-637262777151551195.png" />
+    <Content Include="Avatars\javaScript.png" />
+    <Content Include="Avatars\unnamed-637262685940353009.jpg" />
+    <Content Include="Avatars\visualstudio-637260181116093632.png" />
+    <Content Include="Avatars\xamarinblack-637262775892907933.png" />
+    <Content Include="Avatars\XamarinBlack.png" />
     <Content Include="Content\bracket.css" />
     <Content Include="Content\chartist.css" />
     <Content Include="Content\font-awesome.css" />
