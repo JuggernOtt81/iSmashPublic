@@ -43,6 +43,10 @@ namespace iSmash.Migrations
             {
                 roleManager.Create(new IdentityRole { Name = "Submitter" });
             }
+            if (!context.Roles.Any(r => r.Name == "Unassigned"))
+            {
+                roleManager.Create(new IdentityRole { Name = "Unassigned" });
+            }
             #endregion
 
             #region user creation and role assignment
@@ -71,9 +75,9 @@ namespace iSmash.Migrations
                 {
                     UserName = "demoadmin@mailinator.com",
                     Email = "demoadmin@mailinator.com",
-                    FirstName = "Demo",
-                    LastName = "Admin",
-                    DisplayName = "DemoAdmin",
+                    FirstName = "Hubert",
+                    LastName = "Anderson",
+                    DisplayName = "Farnsworth",
                     AvatarPath = "/Avatars/AvatarBlackInverted.png",
                     EmailConfirmed = true
                 };
@@ -86,8 +90,8 @@ namespace iSmash.Migrations
                 {
                     UserName = "demoprojectmanager@mailinator.com",
                     Email = "demoprojectmanager@mailinator.com",
-                    FirstName = "Demo",
-                    LastName = "ProjectManager",
+                    FirstName = "Hermes",
+                    LastName = "Conrad",
                     DisplayName = "DemoProjectManager",
                     AvatarPath = "/Avatars/AvatarRed.png",
                     EmailConfirmed = true
@@ -101,8 +105,8 @@ namespace iSmash.Migrations
                 {
                     UserName = "demodeveloper@mailinator.com",
                     Email = "demodeveloper@mailinator.com",
-                    FirstName = "Demo",
-                    LastName = "Developer",
+                    FirstName = "Cubert",
+                    LastName = "Farnsworth",
                     DisplayName = "DemoDeveloper",
                     AvatarPath = "/Avatars/AvatarBlue.png",
                     EmailConfirmed = true
@@ -116,14 +120,213 @@ namespace iSmash.Migrations
                 {
                     UserName = "demosubmitter@mailinator.com",
                     Email = "demosubmitter@mailinator.com",
-                    FirstName = "Demo",
-                    LastName = "Submitter",
+                    FirstName = "Abner",
+                    LastName = "Doubledeal",
                     DisplayName = "DemoSubmitter",
                     AvatarPath = "/Avatars/AvatarGreen.png",
                     EmailConfirmed = true
                 };
                 userManager.Create(user, demoPassword);
                 userManager.AddToRoles(user.Id, "Submitter");
+            }
+
+
+            if (!context.Users.Any(u => u.Email == "demounassigned @mailinator.com"))
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = "demounassigned @mailinator.com",
+                    Email = "demounassigned @mailinator.com",
+                    FirstName = "John",
+                    LastName = "Zoidberg",
+                    DisplayName = "Unassigned",
+                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    EmailConfirmed = true
+                };
+                userManager.Create(user, demoPassword);
+                userManager.AddToRoles(user.Id, "Unassigned");
+            }
+
+
+            if (!context.Users.Any(u => u.Email == "Unassigned1@mailinator.com"))
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = "Unassigned1@mailinator.com",
+                    Email = "Unassigned1@mailinator.com",
+                    FirstName = "Hattie",
+                    LastName = "McDoogal",
+                    DisplayName = "Unassigned",
+                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    EmailConfirmed = true
+                };
+                userManager.Create(user, demoPassword);
+                userManager.AddToRoles(user.Id, "Unassigned");
+            }
+            if (!context.Users.Any(u => u.Email == "Unassigned2@mailinator.com"))
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = "Unassigned2@mailinator.com",
+                    Email = "Unassigned2@mailinator.com",
+                    FirstName = "Ogden",
+                    LastName = "Wernstrom",
+                    DisplayName = "Unassigned",
+                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    EmailConfirmed = true
+                };
+                userManager.Create(user, demoPassword);
+                userManager.AddToRoles(user.Id, "Unassigned");
+            }
+            if (!context.Users.Any(u => u.Email == "Unassigned3@mailinator.com"))
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = "Unassigned3@mailinator.com",
+                    Email = "Unassigned3@mailinator.com",
+                    FirstName = "Leo",
+                    LastName = "Wong",
+                    DisplayName = "Unassigned",
+                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    EmailConfirmed = true
+                };
+                userManager.Create(user, demoPassword);
+                userManager.AddToRoles(user.Id, "Unassigned");
+            }
+            if (!context.Users.Any(u => u.Email == "Unassigned4@mailinator.com"))
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = "Unassigned4@mailinator.com",
+                    Email = "Unassigned4@mailinator.com",
+                    FirstName = "Inez",
+                    LastName = "Wong",
+                    DisplayName = "Unassigned",
+                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    EmailConfirmed = true
+                };
+                userManager.Create(user, demoPassword);
+                userManager.AddToRoles(user.Id, "Unassigned");
+            }
+            if (!context.Users.Any(u => u.Email == "Unassigned5@mailinator.com"))
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = "Unassigned5@mailinator.com",
+                    Email = "Unassigned5@mailinator.com",
+                    FirstName = "Bubblegum",
+                    LastName = "Tate",
+                    DisplayName = "Unassigned",
+                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    EmailConfirmed = true
+                };
+                userManager.Create(user, demoPassword);
+                userManager.AddToRoles(user.Id, "Unassigned");
+            }
+            if (!context.Users.Any(u => u.Email == "Unassigned6@mailinator.com"))
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = "Unassigned6@mailinator.com",
+                    Email = "Unassigned6@mailinator.com",
+                    FirstName = "Barbados",
+                    LastName = "Slim",
+                    DisplayName = "Unassigned",
+                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    EmailConfirmed = true
+                };
+                userManager.Create(user, demoPassword);
+                userManager.AddToRoles(user.Id, "Unassigned");
+            }
+            if (!context.Users.Any(u => u.Email == "Unassigned7@mailinator.com"))
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = "Unassigned7@mailinator.com",
+                    Email = "Unassigned7@mailinator.com",
+                    FirstName = "Turanga",
+                    LastName = "Morris",
+                    DisplayName = "Unassigned",
+                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    EmailConfirmed = true
+                };
+                userManager.Create(user, demoPassword);
+                userManager.AddToRoles(user.Id, "Unassigned");
+            }
+            if (!context.Users.Any(u => u.Email == "Unassigned8@mailinator.com"))
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = "Unassigned8@mailinator.com",
+                    Email = "Unassigned8@mailinator.com",
+                    FirstName = "Turanga",
+                    LastName = "Munda",
+                    DisplayName = "Unassigned",
+                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    EmailConfirmed = true
+                };
+                userManager.Create(user, demoPassword);
+                userManager.AddToRoles(user.Id, "Unassigned");
+            }
+            if (!context.Users.Any(u => u.Email == "Unassigned9@mailinator.com"))
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = "Unassigned9@mailinator.com",
+                    Email = "Unassigned9@mailinator.com",
+                    FirstName = "Lionel",
+                    LastName = "Preacherbot",
+                    DisplayName = "Unassigned",
+                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    EmailConfirmed = true
+                };
+                userManager.Create(user, demoPassword);
+                userManager.AddToRoles(user.Id, "Unassigned");
+            }
+            if (!context.Users.Any(u => u.Email == "Unassigned10@mailinator.com"))
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = "Unassigned10@mailinator.com",
+                    Email = "Unassigned10@mailinator.com",
+                    FirstName = "Randy",
+                    LastName = "Munchnik",
+                    DisplayName = "Unassigned",
+                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    EmailConfirmed = true
+                };
+                userManager.Create(user, demoPassword);
+                userManager.AddToRoles(user.Id, "Unassigned");
+            }
+            if (!context.Users.Any(u => u.Email == "Unassigned11@mailinator.com"))
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = "Unassigned11@mailinator.com",
+                    Email = "Unassigned11@mailinator.com",
+                    FirstName = "Linda",
+                    LastName = "Schoonhoven",
+                    DisplayName = "Unassigned",
+                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    EmailConfirmed = true
+                };
+                userManager.Create(user, demoPassword);
+                userManager.AddToRoles(user.Id, "Unassigned");
+            }
+            if (!context.Users.Any(u => u.Email == "Unassigned12@mailinator.com"))
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = "Unassigned12@mailinator.com",
+                    Email = "Unassigned12@mailinator.com",
+                    FirstName = "LaBarbara",
+                    LastName = "Conrad",
+                    DisplayName = "Unassigned",
+                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    EmailConfirmed = true
+                };
+                userManager.Create(user, demoPassword);
+                userManager.AddToRoles(user.Id, "Unassigned");
             }
 
             context.SaveChanges();

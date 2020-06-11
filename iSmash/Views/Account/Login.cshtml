@@ -54,9 +54,11 @@
             min-height: 50%;
             padding: 20%;
         }
+
         .btn-1D2939 {
             background-color: #1D2939;
         }
+
 
     </style>
 </head>
@@ -84,15 +86,19 @@
                 <!-- form-group -->
                 <button name="LogIn" type="submit" class="btn btn-1D2939 btn-block" style="color: #FFFFFF">LOG IN as REGISTERED USER</button>
             }
-            <hr/>
+            <hr />
             <div class="tx-center"><a href="@Url.Action("Index", "Home")" class="tx-info">Register Now</a></div>
             <hr />
             <p class="tx-center">- or -</p>
             <p class="tx-center">click below to test</p>
 
-            <a data-toggle="modal" data-target="#DemoLogInModal" style="margin: 20%">
-                <label style="font-size: x-large; background-color: #868ba1; color: #343a40" data-target="#DemoLogInModal">[ Demo Mode ]</label>
-            </a>
+            @*<a data-toggle="modal" data-target="#DemoLogInModal" style="margin: 20%">
+                    <label style="font-size: x-large; background-color: #868ba1; color: #343a40" data-target="#DemoLogInModal">[ Demo Mode ]</label>
+                </a>*@
+
+            <button data-toggle="modal" data-target="#DemoLogInModal" name="LogIn" type="submit" class="btn btn-1D2939 btn-block" style="background-color: #868ba1; color: #343a40">
+                [ Demo Mode ]
+            </button>
             @*<img src="~/img/logo.png" />*@
             <div class="modal fade" id="DemoLogInModal" role="dialog">
                 <div class="modal-dialog modal-lg">
@@ -106,27 +112,41 @@
 
                         <div class="container-fluid">
 
+
+
                             @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
                             {
                                 @Html.AntiForgeryToken()
 
                                 @Html.Hidden("emailKey", "DemoAdminEmail")
-                                <button type="submit" class="btn btn-primary btn-block" style="width: 100%; margin: 2%">Log in as Demo Admin</button>
+
+                                <button type="submit" class="btn btn-primary btn-block addMore" style="width: 100%; margin: 2%">Log in as Demo Admin</button>
+                                <p>Admin: Full access, can create, modify and delete users & projects.</p>
                             }
+
+
+
                             @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
                             {
                                 @Html.AntiForgeryToken()
 
                                 @Html.Hidden("emailKey", "DemoProjectManagerEmail")
                                 <button type="submit" class="btn btn-primary btn-block" style="width: 100%; margin: 2%">Log in as Demo Project Manager</button>
+                                                                                                                                             
+                                <p>PM: Can make/edit projects. Can assign developers to projects/tickets.</p>
                             }
+
+
                             @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
                             {
                                 @Html.AntiForgeryToken()
 
                                 @Html.Hidden("emailKey", "DemoDeveloperEmail")
                                 <button type="submit" class="btn btn-primary btn-block" style="width: 100%; margin: 2%">Log in as Demo Developer</button>
+                                <p>Developer: Can see, sort, comment on, and update status of assignments.</p>
                             }
+
+
                             @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
                             {
                                 @Html.AntiForgeryToken()
@@ -134,7 +154,20 @@
                                 @Html.Hidden("emailKey", "DemoSubmitterEmail")
 
                                 <button type="submit" class="btn btn-primary btn-block" style="width: 100%; margin: 2%">Log in as Demo Submitter</button>
+                                <p>Submitter: Can create tickets and track their progress.</p>
                             }
+                            
+                            @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                @Html.Hidden("emailKey", "DemoUnassignedEmail")
+
+                                <button type="submit" class="btn btn-primary btn-block" style="width: 100%; margin: 2%">Log in as Demo Submitter</button>
+                                <p>Unassigned: A new user with no permissions until Admin grants another role.</p>
+                            }
+
+
                         </div>
 
                         <div class="modal-footer">
