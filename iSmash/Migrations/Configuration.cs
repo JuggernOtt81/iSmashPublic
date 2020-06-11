@@ -131,16 +131,16 @@ namespace iSmash.Migrations
             }
 
 
-            if (!context.Users.Any(u => u.Email == "demounassigned @mailinator.com"))
+            if (!context.Users.Any(u => u.Email == "demounassigned@mailinator.com"))
             {
                 var user = new ApplicationUser
                 {
-                    UserName = "demounassigned @mailinator.com",
-                    Email = "demounassigned @mailinator.com",
+                    UserName = "demounassigned@mailinator.com",
+                    Email = "demounassigned@mailinator.com",
                     FirstName = "John",
                     LastName = "Zoidberg",
                     DisplayName = "Unassigned",
-                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    AvatarPath = "/Avatars/defaultAvatar.png",
                     EmailConfirmed = true
                 };
                 userManager.Create(user, demoPassword);
@@ -157,7 +157,7 @@ namespace iSmash.Migrations
                     FirstName = "Hattie",
                     LastName = "McDoogal",
                     DisplayName = "Unassigned",
-                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    AvatarPath = "/Avatars/defaultAvatar.png",
                     EmailConfirmed = true
                 };
                 userManager.Create(user, demoPassword);
@@ -172,7 +172,7 @@ namespace iSmash.Migrations
                     FirstName = "Ogden",
                     LastName = "Wernstrom",
                     DisplayName = "Unassigned",
-                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    AvatarPath = "/Avatars/defaultAvatar.png",
                     EmailConfirmed = true
                 };
                 userManager.Create(user, demoPassword);
@@ -187,7 +187,7 @@ namespace iSmash.Migrations
                     FirstName = "Leo",
                     LastName = "Wong",
                     DisplayName = "Unassigned",
-                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    AvatarPath = "/Avatars/defaultAvatar.png",
                     EmailConfirmed = true
                 };
                 userManager.Create(user, demoPassword);
@@ -202,7 +202,7 @@ namespace iSmash.Migrations
                     FirstName = "Inez",
                     LastName = "Wong",
                     DisplayName = "Unassigned",
-                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    AvatarPath = "/Avatars/defaultAvatar.png",
                     EmailConfirmed = true
                 };
                 userManager.Create(user, demoPassword);
@@ -217,7 +217,7 @@ namespace iSmash.Migrations
                     FirstName = "Bubblegum",
                     LastName = "Tate",
                     DisplayName = "Unassigned",
-                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    AvatarPath = "/Avatars/defaultAvatar.png",
                     EmailConfirmed = true
                 };
                 userManager.Create(user, demoPassword);
@@ -232,7 +232,7 @@ namespace iSmash.Migrations
                     FirstName = "Barbados",
                     LastName = "Slim",
                     DisplayName = "Unassigned",
-                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    AvatarPath = "/Avatars/defaultAvatar.png",
                     EmailConfirmed = true
                 };
                 userManager.Create(user, demoPassword);
@@ -247,7 +247,7 @@ namespace iSmash.Migrations
                     FirstName = "Turanga",
                     LastName = "Morris",
                     DisplayName = "Unassigned",
-                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    AvatarPath = "/Avatars/defaultAvatar.png",
                     EmailConfirmed = true
                 };
                 userManager.Create(user, demoPassword);
@@ -262,7 +262,7 @@ namespace iSmash.Migrations
                     FirstName = "Turanga",
                     LastName = "Munda",
                     DisplayName = "Unassigned",
-                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    AvatarPath = "/Avatars/defaultAvatar.png",
                     EmailConfirmed = true
                 };
                 userManager.Create(user, demoPassword);
@@ -277,7 +277,7 @@ namespace iSmash.Migrations
                     FirstName = "Lionel",
                     LastName = "Preacherbot",
                     DisplayName = "Unassigned",
-                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    AvatarPath = "/Avatars/defaultAvatar.png",
                     EmailConfirmed = true
                 };
                 userManager.Create(user, demoPassword);
@@ -292,7 +292,7 @@ namespace iSmash.Migrations
                     FirstName = "Randy",
                     LastName = "Munchnik",
                     DisplayName = "Unassigned",
-                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    AvatarPath = "/Avatars/defaultAvatar.png",
                     EmailConfirmed = true
                 };
                 userManager.Create(user, demoPassword);
@@ -307,7 +307,7 @@ namespace iSmash.Migrations
                     FirstName = "Linda",
                     LastName = "Schoonhoven",
                     DisplayName = "Unassigned",
-                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    AvatarPath = "/Avatars/defaultAvatar.png",
                     EmailConfirmed = true
                 };
                 userManager.Create(user, demoPassword);
@@ -322,7 +322,7 @@ namespace iSmash.Migrations
                     FirstName = "LaBarbara",
                     LastName = "Conrad",
                     DisplayName = "Unassigned",
-                    AvatarPath = "/Avatars/AvatarGreen.png",
+                    AvatarPath = "/Avatars/defaultAvatar.png",
                     EmailConfirmed = true
                 };
                 userManager.Create(user, demoPassword);
