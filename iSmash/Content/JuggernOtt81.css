@@ -20,3 +20,26 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+h2 {
+    text-align: center;
+}
+
+.iCentered {
+    text-align: center;
+}
+
+.centerColumn {
+    font-size: 2em;
+}
+
+.keepAtBottom {
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+}
+
+.importedBody {
+    margin-left: 15%;
+    margin-top: 5%;
+}
