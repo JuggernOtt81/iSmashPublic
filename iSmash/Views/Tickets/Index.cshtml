@@ -5,12 +5,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Tickets Index</h2>
 @if (User.IsInRole("Submitter"))
 {
-    <p>
+
+    <button class="btn btn-info">
         @Html.ActionLink("Create New", "Create")
-    </p>
+    </button>
 }
 <div class="br-section-wrapper">
     <div class="table-wrapper">
@@ -52,8 +53,6 @@
                     </th>
                     @if (User.IsInRole("ProjectManager") || User.IsInRole("Admin"))
                     {
-                        <th>
-                        </th>
                         <th>
                         </th>
                         <th>
@@ -128,9 +127,6 @@
                             </td>
                             <td>
                                 @Html.ActionLink("Details", "Details", new { id = item.Id })
-                            </td>
-                            <td>
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                             </td>
                             <td>
                                 @Html.ActionLink("Dashboard", "Dashboard", new { id = item.Id })

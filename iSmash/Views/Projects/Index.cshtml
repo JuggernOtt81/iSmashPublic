@@ -5,12 +5,12 @@
 @{
     ViewBag.Title = "Index";
 }
-
+    <h2>Projects Index</h2>
 @if (User.IsInRole("ProjectManager") || User.IsInRole("Admin"))
 {
-    <p>
+    <button class="btn btn-info">
         @Html.ActionLink("Create New", "Create")
-    </p>
+    </button>
 }
 
 <div class="table-wrapper">
@@ -67,7 +67,7 @@
                     </td>
                     <td class="td-mid">
                         @{
-                            string pmName = ""; 
+                            string pmName = "";
                             if (db.Users.Find(item.ProjectManagerId) != null)
                             {
                                 pmName = db.Users.Find(item.ProjectManagerId).FullName;

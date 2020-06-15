@@ -13,6 +13,7 @@ using Microsoft.AspNet.Identity;
 
 namespace iSmash.Controllers
 {
+    [Authorize]
     public class ProjectsController : Controller
     {
         private ApplicationUser user = new ApplicationUser();

@@ -5,11 +5,11 @@
 }
 @if (User.IsInRole("Submitter") || (User.IsInRole("Developer")) || (User.IsInRole("ProjectManager")))
 {
-    <h2>Attachments</h2>
+    <h2>Ticket Attachments Index</h2>
 
-    <p>
+    <button class="btn btn-info">
         @Html.ActionLink("Create New", "Create")
-    </p>
+    </button>
     <div class="table-wrapper">
         <table id="datatable1" class="table display responsive nowrap">
             <thead>
@@ -70,5 +70,6 @@
 }
 else
 {
-    <img src="~/img/HaHaHaMovieReferences.gif" /><hr/><p>Your current role is NOT AUTHORIZED to view this content.</p>
+    <img src="~/img/HaHaHaMovieReferences.gif" />
+    <hr /><p>Your current role is NOT AUTHORIZED to view this content.</p>
 }

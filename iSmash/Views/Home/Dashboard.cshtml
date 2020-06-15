@@ -8,14 +8,69 @@
 
 <div class="pd-30">
     <h4 class="tx-gray-800 mg-b-5">Dashboard</h4>
-    <h1>This is the primary dashboard page.<br />Sorry, it's currently under construction.</h1>
-</div><!-- d-flex -->
+</div>
 
 <div class="br-pagebody mg-t-5 pd-x-30">
-    <div class="row row-sm">
-
-    </div><!-- row -->
 
 
+    @if (User.IsInRole("Admin"))
+    {
+        <div>
+            <h1>
+                This is the dashboard for admin only!
+            </h1>
+        </div>
+    }
 
-</div><!-- br-pagebody -->
+
+    @if (User.IsInRole("Project Manager"))
+    {
+        <div>
+            <h1>
+                This is the dashboard for PM only!
+            </h1>
+        </div>
+    }
+
+
+    @if (User.IsInRole("Developer"))
+    {
+        <div>
+            <h1>
+                This is the dashboard for dev only!
+            </h1>
+        </div>
+    }
+
+
+    @if (User.IsInRole("Submitter"))
+    {
+        <div>
+            <h1>
+                This is the dashboard for submitter only!
+            </h1>
+        </div>
+    }
+
+
+    @if (User.IsInRole("Unassigned"))
+    {
+        <div>
+
+            <h1>
+                as an unassigned user,<br/>
+                you currently have no access<br/>
+                to any part of this site<br/>
+                except for your own profile.
+            </h1><hr/>
+                 <h3>
+                     an admin must change your role to elevate your access.
+                 </h3>
+        </div>
+    }
+
+
+
+
+
+</div>

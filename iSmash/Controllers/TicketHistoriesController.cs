@@ -10,6 +10,7 @@ using iSmash.Models;
 
 namespace iSmash.Controllers
 {
+    [Authorize]
     public class TicketHistoriesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

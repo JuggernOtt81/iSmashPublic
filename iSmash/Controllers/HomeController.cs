@@ -11,6 +11,7 @@ using iSmash.ViewModels;
 
 namespace iSmash.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

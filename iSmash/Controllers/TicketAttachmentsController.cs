@@ -14,6 +14,7 @@ using Microsoft.AspNet.Identity;
 
 namespace iSmash.Controllers
 {
+    [Authorize]
     public class TicketAttachmentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

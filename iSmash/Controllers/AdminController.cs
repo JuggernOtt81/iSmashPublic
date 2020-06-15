@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace iSmash.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
