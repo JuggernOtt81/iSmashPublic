@@ -132,6 +132,9 @@ namespace iSmash.Controllers
             {
                 //ticket.TicketStatusId = 0;
                 //ticket.TicketPriorityId = 0;
+
+                ticket.TicketStatusId = db.TicketStatus.Where(ts => ts.Name == "New").FirstOrDefault().Id;
+                ticket.TicketPriorityId = db.TicketPriorities.Where(tp => tp.Name == "TOP").FirstOrDefault().Id;
                 ticket.TicketPriority = null;
                 ticket.TicketStatus = null;
                 ticket.Created = DateTime.Now;
