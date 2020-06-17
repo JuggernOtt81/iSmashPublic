@@ -1,4 +1,5 @@
-﻿@model iSmash.Models.Project
+﻿@using iSmash.Models
+@model iSmash.Models.Project
 
 @{
     ViewBag.Title = "Details";
@@ -9,86 +10,87 @@
 <div>
     <h4>Project</h4>
     <hr />
- 
-        <p>
-            @Html.DisplayNameFor(model => model.Id)
-            =
-            @Html.DisplayFor(model => model.Id)
-        </p>
 
-        <p>
-            @Html.DisplayNameFor(model => model.Priority)
-            =
-            @Html.DisplayFor(model => model.Priority)
-        </p>
+    <p>
+        @Html.DisplayNameFor(model => model.Id)
+        =
+        @Html.DisplayFor(model => model.Id)
+    </p>
 
-        <p>
-            @Html.DisplayNameFor(model => model.PriorityLabel)
-            =
-            @Html.DisplayFor(model => model.PriorityLabel)
-        </p>
+    <p>
+        @Html.DisplayNameFor(model => model.Priority)
+        =
+        @Html.DisplayFor(model => model.Priority)
+    </p>
 
-        <p>
-            @Html.DisplayNameFor(model => model.Status)
-            =
-            @Html.DisplayFor(model => model.Status)
-        </p>
+    <p>
+        @Html.DisplayNameFor(model => model.PriorityLabel)
+        =
+        @Html.DisplayFor(model => model.PriorityLabel)
+    </p>
 
-        <p>
-            @Html.DisplayNameFor(model => model.StatusLabel)
-            =
-            @Html.DisplayFor(model => model.StatusLabel)
-        </p>
+    <p>
+        @Html.DisplayNameFor(model => model.Status)
+        =
+        @Html.DisplayFor(model => model.Status)
+    </p>
 
-        <p>
-            @Html.DisplayNameFor(model => model.Name)
-            =
-            @Html.DisplayFor(model => model.Name)
-        </p>
+    <p>
+        @Html.DisplayNameFor(model => model.StatusLabel)
+        =
+        @Html.DisplayFor(model => model.StatusLabel)
+    </p>
 
-        <p>
-            @Html.DisplayNameFor(model => model.Description)
-            =
-            @Html.DisplayFor(model => model.Description)
-        </p>
+    <p>
+        @Html.DisplayNameFor(model => model.Name)
+        =
+        @Html.DisplayFor(model => model.Name)
+    </p>
 
-        <p>
-            @Html.DisplayNameFor(model => model.ProjectManagerId)
-            =
-            @Html.DisplayFor(model => model.ProjectManagerId)
-        </p>
+    <p>
+        @Html.DisplayNameFor(model => model.Description)
+        =
+        @Html.DisplayFor(model => model.Description)
+    </p>
 
-        <p>
-            @Html.DisplayNameFor(model => model.Created)
-            =
-            @Html.DisplayFor(model => model.Created)
-        </p>
+    <p>
+        @Html.DisplayNameFor(model => model.ProjectManagerId)
+        =
+        @Html.DisplayFor(model => model.ProjectManagerId)
+    </p>
 
-        <p>
-            @Html.DisplayNameFor(model => model.Updated)
-            =
-            @Html.DisplayFor(model => model.Updated)
-        </p>
+    <p>
+        @Html.DisplayNameFor(model => model.Created)
+        =
+        @Html.DisplayFor(model => model.Created)
+    </p>
 
-        <p>
-            @Html.DisplayNameFor(model => model.IsArchived)
-            =
-            @Html.DisplayFor(model => model.IsArchived)
-        </p>
+    <p>
+        @Html.DisplayNameFor(model => model.Updated)
+        =
+        @Html.DisplayFor(model => model.Updated)
+    </p>
 
-        <p>
-            @Html.DisplayNameFor(model => model.Users)
-            =
-            @Html.DisplayFor(model => model.Users)
-        </p>
+    <p>
+        @Html.DisplayNameFor(model => model.IsArchived)
+        =
+        @Html.DisplayFor(model => model.IsArchived)
+    </p>
 
-        <p>
-            @Html.DisplayNameFor(model => model.Tickets)
-            =
-            @Html.DisplayFor(model => model.Tickets)
-        </p>
+    <p>
+        @Html.DisplayNameFor(model => model.Users)
+        =
+        @Html.DisplayFor(model => model.Users)
+    </p>
+
+    <p>
+        @Html.DisplayNameFor(model => model.Tickets)
+        =
+        @Html.DisplayFor(model => model.Tickets)
+    </p>
 
 </div>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")

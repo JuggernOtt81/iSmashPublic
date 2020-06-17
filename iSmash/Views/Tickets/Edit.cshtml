@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Edit";
 }
-@if (User.IsInRole("Submitter") || (User.IsInRole("Developer")))
+@if (User.IsInRole("Submitter") || (User.IsInRole("Developer")) || (User.IsInRole("ProjectManager")) || (User.IsInRole("Admin")))
 {
     <h2>Edit</h2>
 

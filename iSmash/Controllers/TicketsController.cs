@@ -34,7 +34,8 @@ namespace iSmash.Controllers
         public ActionResult ManageTicketAssignments()
         {
             //load a multi select of users
-            ViewBag.UserIds = new SelectList(db.Users, "Id", "FullName");
+            var devs = rolesHelper.UsersInRole("Developer");
+            ViewBag.UserIds = new SelectList(devs, "Id", "FullName");
 
             //load a multi select of projects
             ViewBag.TicketIds = new SelectList(db.Tickets, "Id", "Title");
@@ -129,9 +130,9 @@ namespace iSmash.Controllers
         {
             if (ModelState.IsValid)
             {
-                ticket.TicketPriorityId = 0;
+                //ticket.TicketStatusId = 0;
+                //ticket.TicketPriorityId = 0;
                 ticket.TicketPriority = null;
-                ticket.TicketStatusId = 0;
                 ticket.TicketStatus = null;
                 ticket.Created = DateTime.Now;
                 ticket.Updated = null;

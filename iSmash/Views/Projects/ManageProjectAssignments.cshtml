@@ -42,8 +42,8 @@
                 <tbody>
                     @foreach (var user in Model)
                     {
-                        if (user.RoleName == "Developer")
-                        {
+                        //if (user.RoleName == "Developer")
+                        //{
                             <tr>
                                 <td>
                                     @Html.DisplayFor(model => user.RoleName)
@@ -62,7 +62,7 @@
                                     }
                                 </td>
                             </tr>
-                        }
+                        @*}*@
                     }
                 </tbody>
             </table>

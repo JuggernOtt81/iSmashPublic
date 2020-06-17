@@ -35,20 +35,20 @@ namespace iSmash.Helpers
             switch (myRole)
             {
                 case "Admin":
-                case "DemoAdmin":
+                //case "DemoAdmin":
                     myTickets.AddRange(db.Tickets);
                     break;
                 case "Project Manager":
-                case "DemoPM":
+                //case "DemoPM":
                     //myTickets.AddRange(user.Projects.Where(p => p.IsArchived == false).SelectMany(p => p.Tickets));
                     myTickets.AddRange(db.Projects.Where(p => p.ProjectManagerId == userId).SelectMany(p => p.Tickets));
                     break;
                 case "Developer":
-                case "DemoDeveloper":
+                //case "DemoDeveloper":
                     myTickets.AddRange(db.Tickets.Where(t => t.IsArchived == false).Where(t => t.DeveloperId == userId));
                     break;
                 case "Submitter":
-                case "DemoSubmitter":
+                //case "DemoSubmitter":
                     myTickets.AddRange(db.Tickets.Where(t => t.IsArchived == false).Where(t => t.SubmitterId == userId));
                     break;
             }

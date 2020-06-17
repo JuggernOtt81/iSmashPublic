@@ -108,7 +108,10 @@ namespace iSmash.Controllers
         public async Task<ActionResult> DemoLoginAsync(string emailKey)
         {
             var email = WebConfigurationManager.AppSettings[emailKey];
-            var password = WebConfigurationManager.AppSettings["DemoPassword"];
+            var password = WebConfigurationManager.AppSettings["" +
+                                                               "DemoPassword" +
+                                                               "" +
+                                                               ""];
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(email, password, false, shouldLockout: false);
