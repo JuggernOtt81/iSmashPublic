@@ -34,9 +34,9 @@
                     <th>
                         @Html.DisplayName("STATUS")
                     </th>
-                    <th>
+                    @*<th>
                         @Html.DisplayName("TYPE")
-                    </th>
+                    </th>*@
                     <th>
                         @Html.DisplayName("TITLE")
                     </th>
@@ -46,12 +46,12 @@
                     <th>
                         @Html.DisplayName("CREATED")
                     </th>
-                    <th>
+                    @*<th>
                         @Html.DisplayName("UPDATED")
                     </th>
                     <th>
                         @Html.DisplayName("Archived?")
-                    </th>
+                    </th>*@
                     @if (User.IsInRole("ProjectManager") || User.IsInRole("Admin"))
                     {
                         <th>
@@ -102,9 +102,9 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.TicketStatus.Name)
                         </td>
-                        <td>
+                        @*<td>
                             @Html.DisplayFor(modelItem => item.TicketType.Name)
-                        </td>
+                        </td>*@
                         <td>
                             @Html.DisplayFor(modelItem => item.Title)
                         </td>
@@ -114,12 +114,12 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Created)
                         </td>
-                        <td>
+                        @*<td>
                             @Html.DisplayFor(modelItem => item.Updated)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.IsArchived)
-                        </td>
+                        </td>*@
 
                         @if (User.IsInRole("ProjectManager") || User.IsInRole("Admin"))
                         {
