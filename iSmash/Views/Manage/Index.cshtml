@@ -1,13 +1,14 @@
 ﻿@model iSmash.Models.EditProfileViewModel
 @{
-    ViewBag.Title = "Manage";
+    ViewBag.Title = "User Profile";
 }
 
 <h2>@ViewBag.Title.</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
-    <h4>Change your account settings</h4>
+    <h4>You may change your avatar and password on this page.</h4>
+    @*<h1>must we allow them more access?</h1>*@
     <hr />
     <dl class="dl-horizontal">
         <dt>Password:</dt>
@@ -23,7 +24,8 @@
             }*@
             ]
         </dd>
-        
+        <hr />
+        <h2>Choose a small .png or .jpg file as your avatar.</h2>
     @using (Html.BeginForm("ChangeAvatar", "Manage", FormMethod.Post, new {enctype = "Multipart/form-data"}))
     {
         @Html.AntiForgeryToken()
@@ -35,7 +37,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" class="btn btn-default" value="Confirm" />
+                <input type="submit" class="btn btn-info" value="Confirm" />
             </div>
         </div>
 
