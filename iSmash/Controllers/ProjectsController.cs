@@ -143,6 +143,7 @@ project, HttpPostedFileBase image)
                 project.Created = DateTime.Now;
                 project.PriorityLabel = "unassigned";
                 project.StatusLabel = "unassigned";
+                //project.IsArchived = false;
 
                 db.Projects.Add(project);
                 db.SaveChanges();
