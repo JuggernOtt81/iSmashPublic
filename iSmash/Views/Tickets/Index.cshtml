@@ -1,4 +1,5 @@
-﻿@using System.Diagnostics.Eventing.Reader
+﻿@using iSmash.Helpers
+@using System.Diagnostics.Eventing.Reader
 @model IEnumerable<iSmash.Models.Ticket>
 
 @{
@@ -10,10 +11,145 @@
 @if (User.IsInRole("Submitter"))
 {
 
-    <button class="btn btn-info">
-        @Html.ActionLink("Create New", "Create")
+    @*<button class="btn btn-info">
+            @Html.ActionLink("Create New", "Create")
+        </button>*@
+    <button data-toggle="modal" data-target="#CreateNewTicketModal" type="submit" class="btn btn-1D2939 btn-block" style="background-color: #868ba1; color: #343a40">
+        [ Create New ]
     </button>
 }
+<div class="modal fade" id="CreateNewTicketModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="background-color: #343a40">
+            <div class="modal-header">
+                <h6 class="modal-title">CREATE:</h6>
+            </div>
+            <div class="modal-body">
+                <p>Please provide a name and a description.</p>
+            </div>
+
+            <div class="container-fluid">
+                @using (Html.BeginForm("Create", "Tickets", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+                        <h4>Ticket</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.Label("ProjectId", "Attach to Project: ", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("ProjectId", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessage("ProjectId", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <!--allow submitter to select type of ticket from dropdown menu-->
+                        <div class="form-group">
+                            @Html.Label("TicketTypeId", "TicketTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("TicketTypeId", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessage("TicketTypeId", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!--STATUS = "NEW" by default-->
+
+                        <div class="form-group">
+                            @Html.Label("Ticket Status (almost always should be NEW): ", "TicketStatusId", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("TicketStatusId", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessage("TicketStatusId ", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        @*<div class="form-group">
+                                @Html.LabelFor(model => model.TicketPriorityId, "TicketPriorityId", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownList("TicketPriorityId", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.TicketPriorityId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>*@
+
+                        @*<div class="form-group">
+                                @Html.LabelFor(model => model.SubmitterId, "SubmitterId", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownList("SubmitterId", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.SubmitterId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>*@
+
+                        @*<div class="form-group">
+                                @Html.LabelFor(model => model.DeveloperId, "DeveloperId", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownList("DeveloperId", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.DeveloperId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>*@
+
+                        <div class="form-group">
+                            @Html.Label("Ticket Title: ", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.Editor("Title", new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessage("Ticket ", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Description", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.Editor("Description", new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessage("Description", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Created, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Created, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Updated, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Updated, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Updated, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.IsArchived, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.IsArchived)
+                                        @Html.ValidationMessageFor(model => model.IsArchived, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>*@
+
+
+
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-info" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="br-section-wrapper">
     <div class="table-wrapper">
         <table id="datatable1" class="table display responsive nowrap">
@@ -35,8 +171,8 @@
                         @Html.DisplayName("STATUS")
                     </th>
                     @*<th>
-                        @Html.DisplayName("TYPE")
-                    </th>*@
+                            @Html.DisplayName("TYPE")
+                        </th>*@
                     <th>
                         @Html.DisplayName("TITLE")
                     </th>
@@ -47,11 +183,11 @@
                         @Html.DisplayName("CREATED")
                     </th>
                     @*<th>
-                        @Html.DisplayName("UPDATED")
-                    </th>
-                    <th>
-                        @Html.DisplayName("Archived?")
-                    </th>*@
+                            @Html.DisplayName("UPDATED")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Archived?")
+                        </th>*@
                     @if (User.IsInRole("ProjectManager") || User.IsInRole("Admin"))
                     {
                         <th>
@@ -103,8 +239,8 @@
                             @Html.DisplayFor(modelItem => item.TicketStatus.Name)
                         </td>
                         @*<td>
-                            @Html.DisplayFor(modelItem => item.TicketType.Name)
-                        </td>*@
+                                @Html.DisplayFor(modelItem => item.TicketType.Name)
+                            </td>*@
                         <td>
                             @Html.DisplayFor(modelItem => item.Title)
                         </td>
@@ -115,11 +251,11 @@
                             @Html.DisplayFor(modelItem => item.Created)
                         </td>
                         @*<td>
-                            @Html.DisplayFor(modelItem => item.Updated)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.IsArchived)
-                        </td>*@
+                                @Html.DisplayFor(modelItem => item.Updated)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IsArchived)
+                            </td>*@
 
                         @if (User.IsInRole("ProjectManager") || User.IsInRole("Admin"))
                         {

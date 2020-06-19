@@ -80,6 +80,9 @@ namespace iSmash.Controllers
             //return View(tickets.ToList());
 
             var allTickets = ticketHelper.ListMyTickets().ToList();
+            ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name");
+            ViewBag.TicketTypeId = new SelectList(db.TicketType, "Id", "Name");
+            ViewBag.TicketStatusId = new SelectList(db.TicketStatus, "Id", "Name");
             //var ticketIndexVMs = new List<TicketIndexViewModel>();
             //var userId = new User.Identity.GetUserId();
             //var myRole = rolesHelper.ListUserRoles(userId).FirstOrDefault();
